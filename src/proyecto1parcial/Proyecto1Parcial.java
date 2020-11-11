@@ -17,6 +17,7 @@ public class Proyecto1Parcial {
     public static void main(String[] args) {
         
         System.out.println("Hola compañeros");
+        System.out.println("Este es nuestro repositorio");
         // TODO code application logic here
     }
     
