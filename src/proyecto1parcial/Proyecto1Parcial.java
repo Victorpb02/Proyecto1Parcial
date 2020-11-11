@@ -15,6 +15,8 @@ public class Proyecto1Parcial {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        System.out.println("Hola compañeros");
         // TODO code application logic here
     }
     
