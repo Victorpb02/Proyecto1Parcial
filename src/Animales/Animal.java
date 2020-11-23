@@ -5,10 +5,30 @@
  */
 package Animales;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author UserPC
  */
 public class Animal {
+    private LocalDate fechaIngreso;
+    private String nombre;
+    private String raza;
+    private Sexo sexo;
+    private int edad;
+    private double peso;
+    private ArrayList<String> observaciones;
+    private int codigo;
+    private String estado;
+
+
+    
+    
+    
+    
+    
+    
     
 }

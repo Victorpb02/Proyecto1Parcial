@@ -9,6 +9,6 @@ package Animales;
  *
  * @author UserPC
  */
-public class Gato {
+public class Gato extends Animal {
     
 }

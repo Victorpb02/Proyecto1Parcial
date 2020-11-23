@@ -9,6 +9,7 @@ package Animales;
  *
  * @author UserPC
  */
-public class Perro {
+public class Perro extends Animal {
+    private Tamano tamano;
     
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Empleados;
+package Animales;
 
 /**
  *
  * @author UserPC
  */
-public class Funcionario  {
-    
+public enum TipoAnimal {
+    Perro, Gato
 }
