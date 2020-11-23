@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Fundacion/ManejoVeterinarias.java</file>
-            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Fundacion/Veterinaria.java</file>
-            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Fundacion/RegistrarEmpleado.java</file>
-            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Fundacion/Empleado.java</file>
-            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Fundacion/Administrador.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Correos/GastoVeterinaria.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/ActoresSecundarios/PreferenciaAnimal.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Animales/Tamano.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Correos/Correo.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Registros/GastoVeterinaria.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Empleados/Empleado.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Animales/Animal.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Empleados/Administrador.java</file>
+            <file>file:/C:/Users/UserPC/Downloads/Nueva%20carpeta/Proyecto1Parcial/src/Animales/Sexo.java</file>
         </group>
     </open-files>
 </project-private>

@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fundacion;
+package Correos;
 
 /**
  *
- * @author Angel Carriel
+ * @author UserPC
  */
-public enum TAMANIO {
-    Grande,Mediano,Pequeño;
+public class Correo {
     
 }

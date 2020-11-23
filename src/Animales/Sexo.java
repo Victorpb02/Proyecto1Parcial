@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fundacion;
+package Animales;
 
 /**
  *
- * @author Personal
+ * @author UserPC
  */
-public class Usuario {
+public enum Sexo {
     
 }

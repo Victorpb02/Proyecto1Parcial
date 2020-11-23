@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fundacion;
+package Empleados;
 
 /**
  *
- * @author Personal
+ * @author UserPC
  */
-public class Funcionario {
+public class Administrador extends Empleado{
+    
+    private String cuentaBancaria;
+
+    public Administrador() {
+    }
+    
     
 }

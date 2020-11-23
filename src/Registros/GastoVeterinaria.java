@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fundacion;
+package Registros;
 
 /**
  *
  * @author UserPC
  */
-public class Empleado {
+public class GastoVeterinaria {
     
 }

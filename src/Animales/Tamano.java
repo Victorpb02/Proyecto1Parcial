@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package Fundacion;
+package Animales;
 
 /**
- * 
- * @author Angel Carriel
+ *
+ * @author UserPC
  */
-public class ManejoAdopcion {
-
+public enum Tamano {
+    
 }

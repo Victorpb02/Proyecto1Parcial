@@ -9,6 +9,6 @@ package Fundacion;
  *
  * @author UserPC
  */
-public class ManejoVeterinarias {
+public class Fundacion {
     
 }
