@@ -5,10 +5,17 @@
  */
 package Empleados;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author UserPC
  */
-public class Funcionario  {
+public class Funcionario extends Empleado {
+    
+    public Funcionario(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena){
+        super(nombre, direccion, telefono, dcorreo, fechaInicio, sueldo, usuario, contrasena);
+        
+    } 
     
 }

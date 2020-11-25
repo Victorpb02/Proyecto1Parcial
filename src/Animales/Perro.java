@@ -5,11 +5,19 @@
  */
 package Animales;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author UserPC
  */
 public class Perro extends Animal {
     private Tamano tamano;
+    
+    public Perro(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo,  int edad, double peso, ArrayList<String> observaciones,int codigo, String estado,Tamano tamano){
+        super(fechaIngreso, nombre, raza, sexo,edad,peso,observaciones,codigo,estado);
+        this.tamano=tamano;
+    }
     
 }
