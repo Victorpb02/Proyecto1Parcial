@@ -19,7 +19,12 @@ public class Adopcion {
     private Animal animal;
     private Adoptante adoptante;
     
-    
+    public Adopcion(LocalDate fechaAdopcion, int codgoAdopcion, Animal animal, Adoptante adoptante){
+        this.adoptante = adoptante;
+        this.animal = animal;
+        this.codigoAdopcion = codigoAdopcion;
+        this.fechaAdopcion = fechaAdopcion;
+    }
     
     
     

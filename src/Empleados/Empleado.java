@@ -6,6 +6,7 @@
 package Empleados;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Empleado {
     private String direccion;
     private String telefono;
     private String dcorreo;
-    private LocalDate fechaInicio;
+    private Date fechaInicio;
     private double sueldo;
     private String usuario;
     private String contrasena;
@@ -24,7 +25,7 @@ public class Empleado {
     public Empleado() {
     }
     
-    public Empleado(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena) {
+    public Empleado(String nombre, String direccion, String telefono, String dcorreo, Date fechaInicio, double sueldo, String usuario, String contrasena) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;

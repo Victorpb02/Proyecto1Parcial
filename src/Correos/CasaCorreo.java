@@ -6,10 +6,16 @@
 
 package Correos;
 
+import Fundacion.Fundacion;
+import java.util.ArrayList;
+
 /**
  * 
  * @author Angel Carriel
  */
 public class CasaCorreo {
-
+    private ArrayList<Correo> listaCorreo;
+    private Fundacion repositorio;
+    
+    
 }

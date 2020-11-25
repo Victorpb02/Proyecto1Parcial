@@ -10,5 +10,5 @@ package Correos;
  * @author UserPC
  */
 public class Correo {
-    
+    private String direccionCorreo;
 }

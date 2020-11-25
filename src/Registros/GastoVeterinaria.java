@@ -10,5 +10,5 @@ package Registros;
  * @author UserPC
  */
 public class GastoVeterinaria {
-    
+   
 }

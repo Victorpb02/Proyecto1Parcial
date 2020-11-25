@@ -30,10 +30,10 @@ public class Adoptante {
         this.nombre=nombre;
         this.identificacion = identificacion;
         this.direccion = direccion;
-        this.telefono=telefono;
-        this.dcorreo=dcorreo;
-        this.preferencia=preferencia;
-        this.animalesAdoptados=animalesAdoptados;
+        this.telefono = telefono;
+        this.dcorreo = dcorreo;
+        this.preferencia = preferencia;
+        this.animalesAdoptados = animalesAdoptados;
         
     }
     

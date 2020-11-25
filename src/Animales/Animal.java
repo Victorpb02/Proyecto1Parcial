@@ -38,6 +38,44 @@ public class Animal
         this.observaciones=observaciones;
         this.codigo=codigo;
     }
+
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public ArrayList<String> getObservaciones() {
+        return observaciones;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+    
+    
     
 
     }

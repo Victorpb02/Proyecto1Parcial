@@ -6,6 +6,7 @@
 package Empleados;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Administrador extends Empleado{
     private String cuentaBancaria;
 
     
-    public Administrador(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena,String cuentaBancaria) {
+    public Administrador(String nombre, String direccion, String telefono, String dcorreo, Date fechaInicio, double sueldo, String usuario, String contrasena,String cuentaBancaria) {
         super(nombre, direccion, telefono, dcorreo, fechaInicio, sueldo, usuario, contrasena);
         this.cuentaBancaria= cuentaBancaria;
     }

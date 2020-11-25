@@ -5,10 +5,22 @@
  */
 package ActoresSecundarios;
 
+import Animales.Sexo;
+
 /**
  *
  * @author UserPC
  */
 public class PreferenciaAnimal {
+    private String tipoAnimal;
+    private String raza;
+    private Sexo sexo;
+
+    public PreferenciaAnimal(String tipoAnimal, String raza, Sexo sexo) {
+        this.tipoAnimal = tipoAnimal;
+        this.raza = raza;
+        this.sexo = sexo;
+    }
+    
     
 }

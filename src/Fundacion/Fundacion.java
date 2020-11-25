@@ -9,11 +9,15 @@ import ActoresSecundarios.Veterinaria;
 import Animales.Animal;
 import Animales.Sexo;
 import ActoresSecundarios.GastoVeterinaria;
+import Animales.Gato;
+import Animales.Perro;
 import Empleados.Empleado;
+import Empleados.Funcionario;
 import Registros.Adopcion;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
-
+import java.util.Date;
 /**
  *
  * @author UserPC
@@ -31,6 +35,11 @@ public class Fundacion {
         sc = new Scanner(System.in);
     }
     
+    
+    
+    /*public void inicializarSistema(){
+        Empleado emp1 = new Funcionario("Angel", "Florida Norte", "123456", "hola@espol.edu.ec",Date(30,10,2012), 500.23, "hola", "Hla" );
+    }*/
     
     
     public void registrarAnimal(Animal a){
@@ -54,21 +63,37 @@ public class Fundacion {
     
    //Consultas
     public void consultarAnimal(){
-        System.out.println("Ingrese el TIPO de animal");
+        System.out.println("Ingrese el TIPO de animal(Gato|Perro|(nada si no desea filtrar)): ");
         String tipo = sc.nextLine();
-        System.out.println("Ingrese el SEXO del animal");
+        Object obj = tipo;
+        System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(nada si no desea filtrar)): ");
         String sexo = sc.nextLine();
-        System.out.println("Ingrese la RAZA del animal");
+        Sexo sex = Sexo.valueOf(sexo);
+        System.out.println("Ingrese la RAZA del animal(Raza|(nada si no desea filtrar)): ");
         String raza = sc.nextLine();
         
-        
-        
+        for (Animal a: animales){
+            if (a.getEstado().equals("No adoptado")){        
+                if (a instanceof Perro && tipo.equals("Perro")){
+                    if(a.getSexo().equals(sex)){
+                        if (a.getRaza().equals(raza)){
+                            System.out.println("");
+                        }
+                    }
+                }else{
+                    if (a instanceof Gato && tipo.equals("Gato")){
+                        if(a.getSexo().equals(sex)){
+                            if (a.getRaza().equals(raza)){
+                                System.out.println(""); 
+                            }
+                        }
+                    }else{
+                        System.out.println("No hay ese tipo de animal en la fundación");
+                    }   
+                }   
+            }    
+        }
     }
-   
-    
-    
-    
-    
-    
-    
+
+
 }
