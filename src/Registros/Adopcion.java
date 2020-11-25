@@ -5,10 +5,32 @@
  */
 package Registros;
 
+import ActoresSecundarios.Adoptante;
+import Animales.Animal;
+import java.time.LocalDate;
+
 /**
  *
  * @author UserPC
  */
 public class Adopcion {
+    private LocalDate  fechaAdopcion;
+    private int codigoAdopcion;
+    private Animal animal;
+    private Adoptante adoptante;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

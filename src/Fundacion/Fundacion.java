@@ -8,7 +8,7 @@ import ActoresSecundarios.Adoptante;
 import ActoresSecundarios.Veterinaria;
 import Animales.Animal;
 import Animales.Sexo;
-import Correos.GastoVeterinaria;
+import ActoresSecundarios.GastoVeterinaria;
 import Empleados.Empleado;
 import Registros.Adopcion;
 import java.util.ArrayList;

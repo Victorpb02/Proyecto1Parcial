@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Correos;
 
 /**
- *
- * @author UserPC
+ * 
+ * @author Angel Carriel
  */
-public class GastoVeterinaria {
-    
+public class CasaCorreo {
+
 }

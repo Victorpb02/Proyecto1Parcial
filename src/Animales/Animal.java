@@ -12,7 +12,8 @@ import java.util.ArrayList;
  *
  * @author UserPC
  */
-public class Animal {
+public class Animal 
+{
     private LocalDate fechaIngreso;
     private String nombre;
     private String raza;
@@ -22,13 +23,21 @@ public class Animal {
     private ArrayList<String> observaciones;
     private int codigo;
     private String estado;
+    
 
+    
+    public Animal(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, 
+                                int edad, double peso, ArrayList<String> observaciones,int codigo, String estado)
+    {
+        this.fechaIngreso=fechaIngreso;
+        this.nombre=nombre;
+        this.raza=raza;
+        this.sexo=sexo;
+        this.edad=edad;
+        this.peso=peso;
+        this.observaciones=observaciones;
+        this.codigo=codigo;
+    }
+    
 
-    
-    
-    
-    
-    
-    
-    
-}
+    }
