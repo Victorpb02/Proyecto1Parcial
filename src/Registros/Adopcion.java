@@ -25,6 +25,16 @@ public class Adopcion {
         this.codigoAdopcion = codigoAdopcion;
         this.fechaAdopcion = fechaAdopcion;
     }
+
+    public Adoptante getAdoptante() {
+        return adoptante;
+    }
+
+    @Override
+    public String toString() {
+        return "Adopcion: " + "fechaAdopcion=" + fechaAdopcion + ", codigoAdopcion=" + codigoAdopcion + 
+                ", Tipo =" + animal.getRaza() + ", Sexo =" + animal.getSexo();
+    }
     
     
     

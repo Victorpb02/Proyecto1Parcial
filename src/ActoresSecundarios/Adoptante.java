@@ -36,6 +36,16 @@ public class Adoptante {
         this.animalesAdoptados = animalesAdoptados;
         
     }
+
+    @Override
+    public String toString() {
+        return "Adoptante: " + "nombre=" + nombre + ", identificacion=" + identificacion + ", animalesAdoptados=" + animalesAdoptados;
+    }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
     
     
     

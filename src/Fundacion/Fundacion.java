@@ -94,6 +94,22 @@ public class Fundacion {
             }    
         }
     }
+    
+    
+    public void consultarAdoptante(){
+        for(Adoptante a: adoptantes){
+            System.out.println(a.toString());
+        }
+        System.out.println("Consultar por cedula");
+        System.out.println("Ingrese numero de cedula: ");
+        String nCedula = sc.nextLine();
+        for(Adopcion p: adopciones){
+            Adoptante adop = p.getAdoptante();
+            if( adop.getIdentificacion().equals(nCedula)){
+                  System.out.println(p.toString());
+            }
+        }
+    }
 
 
 }
