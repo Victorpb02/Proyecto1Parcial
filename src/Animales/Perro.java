@@ -5,6 +5,9 @@
  */
 package Animales;
 
+import static Animales.Tamano.Grande;
+import static Animales.Tamano.Mediano;
+import static Animales.Tamano.Pequeno;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -24,6 +27,18 @@ public class Perro extends Animal {
         return tamanio;
     }
     
+    public double calcularCosto(){
+        if (tamanio.equals(Pequeno)){
+            return (5*4)+1;
+        }else if(tamanio.equals(Mediano)){
+            return (5*6)+1;
+        }else{
+            return (4*10)+1;
+        }
+        
+   
+    }
     
+ 
     
 }

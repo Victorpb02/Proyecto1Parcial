@@ -39,6 +39,10 @@ public class Empleado {
     public String getUsuario() {
         return usuario;
     }
+
+    public double getSueldo() {
+        return sueldo;
+    }
     
 
     

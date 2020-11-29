@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ActoresSecundarios;
+import Registros.GastoVeterinaria;
 import java.util.ArrayList;
 
 /**

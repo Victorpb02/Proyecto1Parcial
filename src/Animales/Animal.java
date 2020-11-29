@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author UserPC
  */
-public class Animal 
+public abstract class Animal 
 {
     private LocalDate fechaIngreso;
     private String nombre;
@@ -80,7 +80,9 @@ public class Animal
     public String getEstado() {
         return estado;
     }
-
+    
+    
+    public abstract double calcularCosto();
     @Override
     public String toString() {
         return "fechaIngreso: " + fechaIngreso + ", nombre: " + nombre + ", raza: " + raza + 

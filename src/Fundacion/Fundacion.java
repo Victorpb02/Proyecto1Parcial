@@ -8,12 +8,15 @@ import ActoresSecundarios.Adoptante;
 import ActoresSecundarios.Veterinaria;
 import Animales.Animal;
 import Animales.Sexo;
-import ActoresSecundarios.GastoVeterinaria;
+import Registros.GastoVeterinaria;
 import Animales.Gato;
 import Animales.Perro;
+import Correos.CasaCorreo;
+import Correos.Correo;
 import Empleados.Empleado;
 import Empleados.Funcionario;
 import Registros.Adopcion;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -29,6 +32,7 @@ public class Fundacion {
     private ArrayList<Adopcion> adopciones;
     private ArrayList<Veterinaria> veterinarias;
     private ArrayList<GastoVeterinaria> gastosVeterinarias;
+    private CasaCorreo casaCorreo;
     private Scanner sc;
 
     public Fundacion() {
@@ -67,7 +71,7 @@ public class Fundacion {
         System.out.println("Ingrese el TIPO de animal(Gato|Perro|(nada si no desea filtrar)): ");
         String tipo = sc.nextLine();
         
-        while(!tipo.equals("Perro") || !tipo.equals("Gato") || !tipo.equals("")){
+        while(!tipo.toLowerCase().equals("Perro") || !tipo.toLowerCase().equals("Gato") || !tipo.toLowerCase().equals("")){
             System.out.println(" Tipo de animal incorrecto");
             System.out.println("Ingrese el TIPO de animal(Gato|Perro|(nada si no desea filtrar)): ");
             tipo = sc.nextLine();
@@ -77,13 +81,13 @@ public class Fundacion {
         String sexo = sc.nextLine();
         
         
-        while(!sexo.equals("Macho") || !sexo.equals("Hembra") || !sexo.equals("")){
+        while(!sexo.toLowerCase().equals("Macho") || !sexo.toLowerCase().equals("Hembra") || !sexo.toLowerCase().equals("")){
             System.out.println(" Sexo de animal incorrecto");
             System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(nada si no desea filtrar)): ");
             sexo = sc.nextLine();
         }
         Sexo sexo1 = null;
-        if(sexo.equals("Macho") || sexo.equals("Hembra")){
+        if(sexo.toLowerCase().equals("Macho") || sexo.toLowerCase().equals("Hembra")){
             sexo1 = Sexo.valueOf(sexo);
         }
 
@@ -250,12 +254,92 @@ public class Fundacion {
     
     public void CyRVeterinarias(){
         
-    
+        System.out.println("¿Desea consultar o registrar una veterinaria?: ");
+        String rm = sc.nextLine();
+        while(!rm.toLowerCase().equals("consultar") || !rm.toLowerCase().equals("registrar")){
+            System.out.println("Opción inválida");
+            System.out.println("¿Desea consultar o registrar una veterinaria?: ");
+            rm = sc.nextLine();
+        if (rm.equals("consultar")){
+            for (Veterinaria v: veterinarias){
+                System.out.println(v.toString());
+            }
+         
+        }else if(rm.equals("registrar")){
+            System.out.println("Ingrese el nombre de la veterinaria: ");
+            String nombre = sc.nextLine();
+            System.out.println("Ingrese el número de la veterinaria: ");
+            String numero = sc.nextLine();
+            System.out.println("Ingrese el corre de la veterinaria: ");
+            String correo = sc.nextLine();
+            
+            veterinarias.add(new Veterinaria(nombre, numero, correo));
+        }
+        }
     }
     
+    public void CyRGastoVeterinaria(){
+        System.out.println("¿Desea consultar o registrar un gasto?: ");
+        String es = sc.nextLine();
+        while(!es.toLowerCase().equals("consultar") || !es.toLowerCase().equals("registrar")){
+            System.out.println("Opción inválida");
+            System.out.println("¿Desea consultar o registrar una veterinaria?: ");
+            es = sc.nextLine();    
+        }
+        if (es.equals("consultar")){
+            System.out.println("Ingrese el código del animal: ");
+            int codigo = sc.nextInt();
+            sc.nextLine();
+            for (GastoVeterinaria g: gastosVeterinarias){
+                if (g.getAnimal().getCodigo() == codigo){
+                    System.out.println(g.getMonto());
+                }
+            }
+            
+        }else if(es.equals("registrar")){
+            System.out.println("Ingrese el monto incurrido: ");
+            Double monto = sc.nextDouble();
+            System.out.println("Ingrese el código del animal: ");
+            int codigo = sc.nextInt();
+            Animal a1 = null;
+            for (Animal a: animales){
+                if (codigo == a.getCodigo()){
+                    a1 = a;
+                }
+            }
+            gastosVeterinarias.add(new GastoVeterinaria(monto, LocalDate.now(),a1 ));
+            
+        }
+    
+}
+    
+    public double calcularPresupuestoMensual(){
+        double gastosA = 150;
+        double gastosP = 0;
+        double gastosG = 0;
+        double gastosV = 0;
+        for (Empleado e: empleados){
+            gastosA += e.getSueldo();
+        }
+        for (Animal a: animales){
+            if (a instanceof Gato){
+                gastosG += a.calcularCosto();
+            }else{
+                gastosP += a.calcularCosto();
+            }
+        }
+        for (GastoVeterinaria v: gastosVeterinarias){
+            gastosV += v.getMonto();
+        }
+        double estimado = gastosA + gastosG + gastosP + gastosV;
+        System.out.printf("%-15s %-15s %-15s %-15s %-15s", "G. Administrativos", "G. Perros", "G. Gatos", "G. Veterinarias", "Estimado total");
+        System.out.printf("%-15s %-15s %-15s %-15s %-15s", gastosA, gastosP, gastosG, gastosV, estimado);
+        return estimado;
+    } 
     
     
-    
-
-
+    public void enviarCorreo(){
+        casaCorreo = new CasaCorreo();
+        /*casaCorreo.agregarCorreo(correo);*/
+    }
 }

@@ -15,7 +15,12 @@ import java.util.ArrayList;
  */
 public class CasaCorreo {
     private ArrayList<Correo> listaCorreo;
-    private Fundacion repositorio;
     
+
+    public CasaCorreo(){
     
+    }
+    public void agregarCorreo(Correo correo){
+        listaCorreo.add(correo);
+    }
 }
