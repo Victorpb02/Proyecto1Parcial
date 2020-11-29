@@ -19,6 +19,10 @@ public class Perro extends Animal {
         super(fechaIngreso, nombre, raza, sexo,edad,peso,observaciones,codigo,estado);
         this.tamanio=tamanio;
     }
+
+    public Tamano getTamanio() {
+        return tamanio;
+    }
     
     
     

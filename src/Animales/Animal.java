@@ -23,6 +23,7 @@ public class Animal
     private ArrayList<String> observaciones;
     private int codigo;
     private String estado;
+    private TipoAnimal tipo;
     
 
     
@@ -63,6 +64,11 @@ public class Animal
         return peso;
     }
 
+    public TipoAnimal getTipo() {
+        return tipo;
+    }
+    
+
     public ArrayList<String> getObservaciones() {
         return observaciones;
     }
@@ -73,6 +79,12 @@ public class Animal
 
     public String getEstado() {
         return estado;
+    }
+
+    @Override
+    public String toString() {
+        return "fechaIngreso: " + fechaIngreso + ", nombre: " + nombre + ", raza: " + raza + 
+                ", sexo: " + sexo + ", edad: " + edad + ", peso: " + peso + ", observaciones: " + observaciones + ", codigo: " + codigo + ", estado: " + estado + ", tipo: " + tipo;
     }
     
     

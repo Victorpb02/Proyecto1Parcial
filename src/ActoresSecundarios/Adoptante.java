@@ -46,6 +46,22 @@ public class Adoptante {
         return identificacion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getDcorreo() {
+        return dcorreo;
+    }
+    
+    
+    
+    
+
     
     
     

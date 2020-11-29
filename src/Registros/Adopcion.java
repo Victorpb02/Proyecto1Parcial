@@ -32,9 +32,26 @@ public class Adopcion {
 
     @Override
     public String toString() {
-        return "Adopcion: " + "fechaAdopcion=" + fechaAdopcion + ", codigoAdopcion=" + codigoAdopcion + 
-                ", Tipo =" + animal.getRaza() + ", Sexo =" + animal.getSexo();
+        return  "fecha de Adopcion: " + fechaAdopcion + ", codigo del Animal: " + animal.getCodigo() + 
+                ", Nombre del animal: " + animal.getNombre() + ", Cedula del Adoptante: " + adoptante.getIdentificacion() +
+                ", Nombre del Adoptante: " + adoptante.getNombre();
     }
+    
+    public String toString1() {
+        return  "fecha de Adopcion: " + fechaAdopcion+ "\n"+
+                "Datos de Adoptante: "+ "\n"
+                + ", Cedula: " + adoptante.getIdentificacion() +", Nombre: " + adoptante.getNombre()+ ", Correo: " + 
+                adoptante.getDcorreo() + ", Direccion: " + adoptante.getDireccion()+ "\n" + 
+                "Datos de animal: "
+                + animal.toString();
+    }    
+    
+
+    public int getCodigoAdopcion() {
+        return codigoAdopcion;
+    }
+    
+    
     
     
     
