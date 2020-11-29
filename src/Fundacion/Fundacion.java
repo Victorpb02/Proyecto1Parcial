@@ -50,19 +50,16 @@ public class Fundacion {
         animales.add(a);
     }
     public void registrarEmpleado(Empleado e){
-        empleados.add(e);
+        if(!empleados.contains(e)){
+            empleados.add(e);
+        }
+        
     }    
     public void registrarAdoptante(Adoptante a){
         adoptantes.add(a);
     }
     public void registrarAdopciones(Adopcion a){
         adopciones.add(a);
-    }
-    public void consultarRegistrarVeterinaria(Veterinaria v){
-        veterinarias.add(v);
-    }    
-    public void consultarRegistrarGVeterinaria( GastoVeterinaria gv){
-        gastosVeterinarias.add(gv);
     }
     
    //Consultas
@@ -341,5 +338,6 @@ public class Fundacion {
     public void enviarCorreo(){
         casaCorreo = new CasaCorreo();
         /*casaCorreo.agregarCorreo(correo);*/
+        
     }
 }
