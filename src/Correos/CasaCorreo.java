@@ -20,6 +20,7 @@ public class CasaCorreo {
     public CasaCorreo(){
     
     }
+    
     public void agregarCorreo(Correo correo){
         listaCorreo.add(correo);
     }

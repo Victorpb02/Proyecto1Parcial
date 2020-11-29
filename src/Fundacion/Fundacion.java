@@ -15,6 +15,7 @@ import Correos.CasaCorreo;
 import Correos.Correo;
 import Empleados.Empleado;
 import Empleados.Funcionario;
+import Empleados.Administrador;
 import Registros.Adopcion;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ import java.util.Date;
 public class Fundacion {
     private ArrayList<Animal> animales;
     private ArrayList<Empleado> empleados;
+    private ArrayList<String> usuarios;
     private ArrayList<Adoptante> adoptantes;
     private ArrayList<Adopcion> adopciones;
     private ArrayList<Veterinaria> veterinarias;
@@ -47,12 +49,31 @@ public class Fundacion {
     
     
     public void registrarAnimal(Animal a){
+        
         animales.add(a);
     }
     public void registrarEmpleado(Empleado e){
-        if(!empleados.contains(e)){
-            empleados.add(e);
+       if (!usuarios.contains(e.getUsuario())){
+           System.out.println("¿Desea fijar como administrador?(Si-No): ");
+           String cond = sc.nextLine().toUpperCase();
+           if(cond.equals("SI")){
+               Administrador ad = (Administrador) e;
+               empleados.add(ad);
+               usuarios.add(ad.getUsuario());
+           }
+           else if (cond.equals("NO")){
+               Funcionario fun = (Funcionario) e;
+               empleados.add(fun);
+               usuarios.add(fun.getUsuario());
+           }
+           else{
+               System.out.println("Digite una opcion válida plox x'd");
+           }
         }
+       else{
+           System.out.println("Este usuario ya está ocupado, digite otro");
+       }
+
         
     }    
     public void registrarAdoptante(Adoptante a){
