@@ -202,17 +202,51 @@ public class Fundacion {
     public void registrarAdopciones(){
         System.out.println("Ingrese el código del animal: ");
         int codigo = sc.nextInt();
-        sc.nextLine();
+        boolean c = false;
+        boolean d = false;
+        do{
+            for(Adopcion a: adopciones){
+                if(a.getAnimal().getCodigo() == codigo){
+                    c = true;
+                    if(a.getAnimal().getEstado().equals("No adoptado")){
+                        d = true;
+                        break;
+                    }
+                }
+            }if(c == false){
+                System.out.println("El animal no ha sido encontrado");
+                System.out.println("Ingrese un nuevo codigo de animal: ");
+                codigo = sc.nextInt();
+                sc.nextLine();
+            }else if(d == false){
+                System.out.println("El animal ya se encuentra adoptado");
+                System.out.println("Ingrese un nuevo codigo de animal: ");
+                codigo = sc.nextInt();
+                sc.nextLine();
+            }
+        }while(c == false || d == false);
+        
+        
         System.out.println("Ingrese la cédula del adoptante: ");
         String id = sc.nextLine();
-        for (Adopcion a: adopciones){
-           if ((a.getAdoptante().getIdentificacion().equals(id)) && (a.getAnimal().getCodigo() == codigo)){
-               
-           }else{
-               System.out.println("El animal ya está adoptado o el cliente no existe");
-           }
+        c = false;
+        do{
+            for (Adopcion a: adopciones){
+                if (a.getAdoptante().getIdentificacion().equals(id)){
+                    c = true;
+                    break;
+                }
+            }if(c == false){
+                System.out.println("El adoptante no ha sido encontrado");
+                System.out.println("Ingrese cedula del adoptante: ");
+                id = sc.nextLine();
+            }
+        }while(c == false);
+        
+
+
         }
-    }
+
     
    //Consultas
     public void consultarAnimal(){
