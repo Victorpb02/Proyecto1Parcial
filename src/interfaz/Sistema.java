@@ -15,7 +15,7 @@ import java.util.Scanner;
  
 public class Sistema {
    private Scanner sc;
-    private Fundacion fd;
+   private Fundacion fd;
     
     public Sistema(){
        sc = new Scanner(System.in);
@@ -32,6 +32,14 @@ public class Sistema {
         System.out.println("5. Consultar adopciones");
         System.out.println("6. Consultar adoptantes");
         System.out.println("7. Cerrar sesion");
+        String opcion = sc.nextLine();
+        switch (opcion){
+            case "1":
+                fd.registrarAnimal();
+        }
+                
+        
+                
     }
     
     public void presentarMenuAdministrador(){
@@ -43,6 +51,7 @@ public class Sistema {
         System.out.println("4. Consultar presupuesto mensual");
         System.out.println("5. Enviar correo interesados");
         System.out.println("6. Cerrar sesion");
+        String opcion = sc.nextLine();
     }
     public void iniciarSistema(){
         System.out.println("Ingrese su usuario y contraseña");

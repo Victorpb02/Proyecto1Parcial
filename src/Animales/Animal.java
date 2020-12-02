@@ -21,14 +21,14 @@ public abstract class Animal
     private int edad;
     private double peso;
     private ArrayList<String> observaciones;
-    private int codigo;
+    private static int codigo;
     private String estado;
     private TipoAnimal tipo;
     
-
+    
     
     public Animal(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, 
-                                int edad, double peso, ArrayList<String> observaciones,int codigo, String estado)
+                                int edad, double peso)
     {
         this.fechaIngreso=fechaIngreso;
         this.nombre=nombre;
@@ -36,8 +36,9 @@ public abstract class Animal
         this.sexo=sexo;
         this.edad=edad;
         this.peso=peso;
-        this.observaciones=observaciones;
+        ArrayList<String> observaciones = new ArrayList();  
         this.codigo=codigo;
+        this.estado = "No adoptado";
     }
 
     public LocalDate getFechaIngreso() {
@@ -79,6 +80,18 @@ public abstract class Animal
 
     public String getEstado() {
         return estado;
+    }
+    
+    public int generarCodigo(){
+        return codigo+=1;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setObservaciones(ArrayList<String> observaciones) {
+        this.observaciones = observaciones;
     }
     
     

@@ -30,6 +30,10 @@ public class Adopcion {
         return adoptante;
     }
 
+    public Animal getAnimal() {
+        return animal;
+    }
+
     @Override
     public String toString() {
         return  "fecha de Adopcion: " + fechaAdopcion + ", codigo del Animal: " + animal.getCodigo() + 

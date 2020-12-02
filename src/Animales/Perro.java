@@ -18,15 +18,15 @@ import java.util.ArrayList;
 public class Perro extends Animal {
     private Tamano tamanio;
     
-    public Perro(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo,  int edad, double peso, ArrayList<String> observaciones,int codigo, String estado,Tamano tamano){
-        super(fechaIngreso, nombre, raza, sexo,edad,peso,observaciones,codigo,estado);
+    public Perro(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo,  int edad, double peso,Tamano tamano){
+        super(fechaIngreso, nombre, raza, sexo,edad,peso);
         this.tamanio=tamanio;
     }
 
     public Tamano getTamanio() {
         return tamanio;
     }
-    
+    @Override
     public double calcularCosto(){
         if (tamanio.equals(Pequeno)){
             return (5*4)+1;

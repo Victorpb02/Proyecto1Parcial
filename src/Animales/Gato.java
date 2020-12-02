@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class Gato extends Animal {
         
-    public Gato(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, int edad, double peso, ArrayList<String> observaciones,int codigo, String estado){
-            super(fechaIngreso, nombre, raza, sexo,edad,peso,observaciones,codigo,estado);
+    public Gato(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, int edad, double peso){
+            super(fechaIngreso, nombre, raza, sexo,edad,peso);
           }
-    
+    @Override
     public double calcularCosto(){
         if (getEdad()<8){
             return 2.5*3;
