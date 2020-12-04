@@ -5,7 +5,11 @@
  */
 package interfaz;
 
+import Empleados.Administrador;
+import Empleados.Empleado;
+import Empleados.Funcionario;
 import Fundacion.Fundacion;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -53,14 +57,48 @@ public class Sistema {
         System.out.println("6. Cerrar sesion");
         String opcion = sc.nextLine();
     }
-    public void iniciarSistema(){
+public void iniciarSistema(){
         System.out.println("Ingrese su usuario y contraseña");
         System.out.println("Usuario:");
         String usuario = sc.nextLine();
         System.out.println("Contraseña:");
-        String contraseña = sc.nextLine();
+        String contrasena = sc.nextLine();
         
+        ArrayList<Empleado> empleados = fd.getEmpleados();
+        boolean u = false;
+        boolean c = false;
+        int i = 0;
+        do{
+            for(Empleado e: empleados){
+                if(e.getUsuario() == usuario){
+                    u = true;
+                    break;
+                }
+                i++;
+            }if(u == true){
+                if(empleados.get(i).equals(contrasena)){
+                    c = true;
+                }else{
+                    System.out.println("Contrasena incorrecta");
+                    System.out.println("Ingrese contraseña incorrecta:");
+                    contrasena = sc.nextLine();
+                }
+
+            }else if (u == false){
+                System.out.println("Usuario incorrecto");
+                System.out.println("Ingrese Usuario:");
+                usuario = sc.nextLine();
+            }
+    }while( u == false || c == false);
+    if(u == true && c == true){
+          if(empleados.get(i) instanceof Administrador){
+              presentarMenuAdministrador();
+          } else if(empleados.get(i) instanceof Funcionario){
+              presentarMenuFuncionario();
+          }           
+      }
         
+      
     }
     
     
