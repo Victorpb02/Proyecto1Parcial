@@ -394,7 +394,18 @@ public class Fundacion {
                             }
                 }      
            }else{
-               //todo
+                   if(b instanceof Perro){
+                    Perro p = (Perro)b;
+                    System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n", 
+                        p.getFechaIngreso(), p.getNombre(),p.getRaza(),p.getSexo(),p.getPeso(),
+                        p.getEdad(),p.getTamanio(),p.getObservaciones());
+                    } else{
+                        Gato g = (Gato) b;
+                        System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n", 
+                            g.getFechaIngreso(), g.getNombre(),g.getRaza(),g.getSexo(),g.getPeso(),
+                            g.getEdad(),"",g.getObservaciones());
+                            } 
+               
            } 
         }
         }
