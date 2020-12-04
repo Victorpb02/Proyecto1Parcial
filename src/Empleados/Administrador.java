@@ -21,5 +21,5 @@ public class Administrador extends Empleado{
         super(nombre, direccion, telefono, dcorreo, fechaInicio, sueldo, usuario, contrasena);
         this.cuentaBancaria= cuentaBancaria;
     }
-    
+                                             //  "Rocio", "Espol", "146551", "asdasa@espol.edu.ec", date, 200, "hola1", "usuario2", "contrasena2"
 }

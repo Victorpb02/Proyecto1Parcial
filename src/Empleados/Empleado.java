@@ -43,6 +43,14 @@ public class Empleado {
     public double getSueldo() {
         return sueldo;
     }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public String getDcorreo() {
+        return dcorreo;
+    }
     
 
     

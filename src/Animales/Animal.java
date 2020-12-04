@@ -96,6 +96,7 @@ public abstract class Animal
     
     
     public abstract double calcularCosto();
+    
     @Override
     public String toString() {
         return "fechaIngreso: " + fechaIngreso + ", nombre: " + nombre + ", raza: " + raza + 

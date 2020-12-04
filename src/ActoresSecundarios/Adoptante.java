@@ -57,6 +57,10 @@ public class Adoptante {
     public String getDcorreo() {
         return dcorreo;
     }
+
+    public PreferenciaAnimal getPreferencia() {
+        return preferencia;
+    }
     
     
     

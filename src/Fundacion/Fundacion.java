@@ -28,6 +28,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 /**
  *
  * @author UserPC
@@ -35,7 +41,7 @@ import java.util.Date;
 public class Fundacion {
     private ArrayList<Animal> animales;
     private ArrayList<Empleado> empleados;
-    private ArrayList<String> usuarios;
+    //private ArrayList<String> usuarios;
     private ArrayList<Adoptante> adoptantes;
     private ArrayList<Adopcion> adopciones;
     private ArrayList<Veterinaria> veterinarias;
@@ -45,19 +51,21 @@ public class Fundacion {
 
     public Fundacion() {
         sc = new Scanner(System.in);
-    }
-    
-    
-    
-    public void inicializarSistema(){
-        
-        LocalDate date = LocalDate.parse("2018-10-30");
-        Empleado emp1 = new Funcionario("Angel", "Florida Norte", "123456", "hola@espol.edu.ec", date, 500.23, "hola", "Hla" );
-        Empleado emp2 = new Administrador("Rocio", "Espol", "146551", "asdasa@espol.edu.ec", date, 200, "hola1", "Hola2", "123456");
+        empleados = new ArrayList<Empleado>();
+        adoptantes = new ArrayList<Adoptante>();
+         adopciones = new ArrayList<Adopcion>();
+         veterinarias = new ArrayList<Veterinaria>();
+         gastosVeterinarias= new ArrayList<GastoVeterinaria>();
+         
+         LocalDate date = LocalDate.parse("2018-10-30");
+        Empleado emp1 = new Funcionario("Angel", "Florida Norte", "123456", "hola@espol.edu.ec", date, 500.23, "usuario1", "contrasena1" );
+        empleados.add(emp1);
+        Empleado emp2 = new Administrador("Rocio", "Espol", "146551", "asdasa@espol.edu.ec", date, 200.0, "usuario2", "contrasena2","123456");
+        empleados.add(emp2);
         Animal p1 = new Perro(LocalDate.now(), "s1", "asdasda", Macho, 5, 50.2, Mediano);
         p1.generarCodigo();
         
-        ArrayList<String> sad = new ArrayList<>();
+        ArrayList<String> sad = new ArrayList<String>();
         sad.add("asdas");
         p1.setObservaciones(sad);
         Animal p2 = new Perro(LocalDate.now(), "s2", "asdasda", Macho, 5, 50.2, Mediano);
@@ -79,25 +87,27 @@ public class Fundacion {
         adoptantes.add(new Adoptante("Hola1","adas","sdasa","asdas","sdasa",new PreferenciaAnimal("asda","asdas", Hembra),0 ));
         
         
-        
+    }
+
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
     }
     
-    
     public void registrarAnimal(){
-        LocalDate dateTime = LocalDate.now();
+        LocalDate fechaIngreso = LocalDate.now();
         System.out.println("Ingrese el nombre del animal: ");
         String nombre = sc.nextLine();
         
         System.out.println("Ingrese la raza del animal: ");
         String raza = sc.nextLine();
         
-        System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(nada si no desea filtrar)): ");
+        System.out.println("Ingrese el SEXO del animal(Macho|Hembra): ");
         String sexo = sc.nextLine();
         
         
-        while(!sexo.toLowerCase().equals("Macho") || !sexo.toLowerCase().equals("Hembra") || !sexo.toLowerCase().equals("")){
+        while(!sexo.toLowerCase().equals("Macho") || !sexo.toLowerCase().equals("Hembra")){
             System.out.println(" Sexo de animal incorrecto");
-            System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(nada si no desea filtrar)): ");
+            System.out.println("Ingrese el SEXO del animal(Macho|Hembra): ");
             sexo = sc.nextLine();
         }
         Sexo sexo1 = null;
@@ -118,54 +128,70 @@ public class Fundacion {
         
         String[] observaciones = observacion.split(",");
         
-        System.out.println("Ingrese el TIPO de animal(Gato|Perro|(nada si no desea filtrar)): ");
+        System.out.println("Ingrese el TIPO de animal(Gato|Perro): ");
         String tipo = sc.nextLine();
-        while(!tipo.toLowerCase().equals("Perro") || !tipo.toLowerCase().equals("Gato") || !tipo.toLowerCase().equals("")){
+        while(!tipo.toLowerCase().equals("Perro") || !tipo.toLowerCase().equals("Gato")){
             System.out.println(" Tipo de animal incorrecto");
-            System.out.println("Ingrese el TIPO de animal(Gato|Perro|(nada si no desea filtrar)): ");
+            System.out.println("Ingrese el TIPO de animal(Gato|Perro): ");
             tipo = sc.nextLine();
         }
         if (tipo.equals("perro")){
-            System.out.println("Ingrese el tamaño del perro(Grande, mediano o Pequeno: ");
+            System.out.println("Ingrese el tamaño del perro(Grande, mediano o Pequeno(Si es gato de enter): ");
             String taman = sc.nextLine();
             Tamano tamanio = null;
             if(taman.toLowerCase().equals("Grande") || taman.toLowerCase().equals("Mediano") || taman.toLowerCase().equals("Pequeno")){
                 tamanio = Tamano.valueOf(taman);
-                Animal a = new Perro(dateTime, nombre, raza, sexo1, edad, peso, tamanio);
+                Animal a = new Perro(fechaIngreso, nombre, raza, sexo1, edad, peso, tamanio);
                 a.generarCodigo();
                 a.setEstado("No adoptado");
             }else{   
-                Animal a = new Gato(dateTime, nombre, raza, sexo1, edad, peso);
+                Animal a = new Gato(fechaIngreso, nombre, raza, sexo1, edad, peso);
                 a.generarCodigo();
                 a.setEstado("No adoptado");
         }
     } 
     }    
     
-    public void registrarEmpleado(Empleado e){
-       if (!usuarios.contains(e.getUsuario())){
-           System.out.println("¿Desea fijar como administrador?(Si-No): ");
-           String cond = sc.nextLine().toUpperCase();
-           if(cond.equals("SI")){
-               Administrador ad = (Administrador) e;
-               empleados.add(ad);
-               usuarios.add(ad.getUsuario());
-           }
-           else if (cond.equals("NO")){
-               Funcionario fun = (Funcionario) e;
-               empleados.add(fun);
-               usuarios.add(fun.getUsuario());
-           }
-           else{
-               System.out.println("Digite una opcion válida plox x'd");
-           }
-        }
-       else{
-           System.out.println("Este usuario ya está ocupado, digite otro");
-       }
+    public void registrarEmpleado(){
+        System.out.println("Ingrese el nombre completo: ");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese la direccion: ");
+        String direccion = sc.nextLine();
+        System.out.println("Ingrese su telefono: ");
+        String telefono = sc.nextLine();
+        System.out.println("Ingrese su direccion correo: ");
+        String dcorreo = sc.nextLine();
+        System.out.println("Ingrese la fecha cuando empezó a trabajar(AA-MM-DD)");
+        String f = sc.nextLine();
+        LocalDate date = LocalDate.parse(f);
+        System.out.println("Ingrese su suedlo");
+        double sueldo = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("Escriba un usuario para su cuenta");
+        String usuario=sc.nextLine();
+        int cont = 0;
+        while(cont!=empleados.size()){
+            for(Empleado emp:empleados){
+                if(!emp.getUsuario().equals(usuario)){
+                    cont++;
+                }      
+            }            
+            if(cont==empleados.size()){
+                System.out.println("Usuario registrado");
+            }
+            else{
+                System.out.println("Usuario existente, ingrese uno nuevo");
+                System.out.println("Escriba un usuario para su cuenta");
+                usuario=sc.nextLine();                
+            }
+         }
 
+        System.out.println("Escriba una contraseña para su cuenta");
+        String contrasena=sc.nextLine();
         
-    }    
+    } 
+    
+    
     public void registrarAdoptante(){
         System.out.println("Ingrese el nombre del interesado: ");
         String nombre = sc.nextLine();
@@ -230,9 +256,13 @@ public class Fundacion {
         System.out.println("Ingrese la cédula del adoptante: ");
         String id = sc.nextLine();
         c = false;
+        String dcorreo = "";
+        String correo ="";
         do{
             for (Adopcion a: adopciones){
                 if (a.getAdoptante().getIdentificacion().equals(id)){
+                  dcorreo= a.getAdoptante().getDcorreo(); //direccion de correo del adoptantes
+                   correo=a.toString(); // informacion que se va a mostrar en el correo
                     c = true;
                     break;
                 }
@@ -242,9 +272,7 @@ public class Fundacion {
                 id = sc.nextLine();
             }
         }while(c == false);
-        
-
-
+        enviarCorreo(dcorreo,correo);
         }
 
     
@@ -394,13 +422,13 @@ public class Fundacion {
                             }
                 }      
            }else{
-                   if(b instanceof Perro){
-                    Perro p = (Perro)b;
+                   if(a instanceof Perro){
+                    Perro p = (Perro)a;
                     System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n", 
                         p.getFechaIngreso(), p.getNombre(),p.getRaza(),p.getSexo(),p.getPeso(),
                         p.getEdad(),p.getTamanio(),p.getObservaciones());
                     } else{
-                        Gato g = (Gato) b;
+                        Gato g = (Gato) a;
                         System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n", 
                             g.getFechaIngreso(), g.getNombre(),g.getRaza(),g.getSexo(),g.getPeso(),
                             g.getEdad(),"",g.getObservaciones());
@@ -532,9 +560,64 @@ public class Fundacion {
     } 
     
     
-    public void enviarCorreo(){
-        casaCorreo = new CasaCorreo();
-        /*casaCorreo.agregarCorreo(correo);*/
+public void enviarCorreo(String destino, String datos){
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable","true");
+        props.put("mail.smtp.user", "animalesfundacion10@gmail.com");
+        props.put("mail.smtp,clave","FundacionAnimales10" );
         
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage texto = new MimeMessage(session);
+        
+        try{
+            texto.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
+            texto.setSubject("Datos de adopción");
+            texto.setText(datos);
+            Transport t = session.getTransport("smtp");
+            t.connect("smtp.gmail.com", "animalesfundacion10@gmail.com", "FundacionAnimales10");
+            t.sendMessage(texto, texto.getAllRecipients());
+            t.close();
+            System.out.println("Correo enviado");
+        }catch(Exception e){
+            e.printStackTrace();
+        
+        }
     }
+       public  void enviarCorreo(){
+            for(Adoptante ad: adoptantes ){
+             PreferenciaAnimal preferencia = ad.getPreferencia();
+             for(Animal a : animales){
+                 if(preferencia.getTipoAnimal().equals(a.getTipo()) && preferencia.getSexo().equals(a.getSexo()) && preferencia.getRaza().equals(a.getRaza())){
+                     String dcorreo=ad.getDcorreo();
+                     String  correo=a.toString();
+                        Properties props = new Properties();
+                        props.put("mail.smtp.host", "smtp.gmail.com");
+                        props.put("mail.smtp.port", "587");
+                        props.put("mail.smtp.auth", "true");
+                        props.put("mail.smtp.starttls.enable","true");
+                        props.put("mail.smtp.user", "animalesfundacion10@gmail.com");
+                        props.put("mail.smtp,clave", "FundacionAnimales10");
+
+                        Session session = Session.getDefaultInstance(props);
+                        MimeMessage texto = new MimeMessage(session);
+                        try{
+                            texto.addRecipient(Message.RecipientType.TO, new InternetAddress(dcorreo));
+                            texto.setSubject("Datos de animales");
+                            texto.setText(correo);
+                            Transport t = session.getTransport("smtp");
+                            t.connect("smtp.gmail.com", "animalesfundacion10@gmail.com", "FundacionAnimales10");
+                            t.sendMessage(texto, texto.getAllRecipients());
+                            t.close();
+                            System.out.println("Correo enviado");
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }                        
+                 }
+             }
+          }
+
+        }
 }

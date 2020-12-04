@@ -40,10 +40,27 @@ public class Sistema {
         switch (opcion){
             case "1":
                 fd.registrarAnimal();
-        }
-                
-        
-                
+                break;
+            case "2":
+                fd.consultarAnimal();
+                break;
+            case "3":
+                fd.registrarAdoptante();
+                break;
+            case "4":
+                fd.registrarAdopciones();
+                break;
+            case "5":
+                fd.consultarAdopciones();
+                break;
+            case "6":
+                fd.consultarAdoptante();
+                break;
+            case "7":
+                System.out.println("Se ha cerrado la sesión");
+                iniciarSistema();
+                break;
+        }           
     }
     
     public void presentarMenuAdministrador(){
@@ -56,6 +73,29 @@ public class Sistema {
         System.out.println("5. Enviar correo interesados");
         System.out.println("6. Cerrar sesion");
         String opcion = sc.nextLine();
+        switch(opcion){
+            case "1":
+                fd.registrarEmpleado();
+                break;
+            case "2":
+                fd.CyRVeterinarias();
+                break;
+            case "3":
+                fd.CyRGastoVeterinaria();
+                break;
+            case "4":
+                fd.calcularPresupuestoMensual();
+                break;
+            case "5":
+                fd.enviarCorreo();
+                break;
+            case "6":
+                System.out.println("Se ha cerrado la sesión.");
+                iniciarSistema();
+                break;
+
+        }
+    
     }
 public void iniciarSistema(){
         System.out.println("Ingrese su usuario y contraseña");
@@ -65,40 +105,31 @@ public void iniciarSistema(){
         String contrasena = sc.nextLine();
         
         ArrayList<Empleado> empleados = fd.getEmpleados();
-        boolean u = false;
-        boolean c = false;
-        int i = 0;
-        do{
-            for(Empleado e: empleados){
-                if(e.getUsuario() == usuario){
-                    u = true;
-                    break;
-                }
-                i++;
-            }if(u == true){
-                if(empleados.get(i).equals(contrasena)){
-                    c = true;
-                }else{
-                    System.out.println("Contrasena incorrecta");
-                    System.out.println("Ingrese contraseña incorrecta:");
-                    contrasena = sc.nextLine();
-                }
-
-            }else if (u == false){
-                System.out.println("Usuario incorrecto");
-                System.out.println("Ingrese Usuario:");
-                usuario = sc.nextLine();
-            }
-    }while( u == false || c == false);
-    if(u == true && c == true){
-          if(empleados.get(i) instanceof Administrador){
-              presentarMenuAdministrador();
-          } else if(empleados.get(i) instanceof Funcionario){
-              presentarMenuFuncionario();
-          }           
-      }
+       
+        boolean cond = true;
+       while(cond==true){ 
+           for(Empleado e : empleados){
+               if(e.getUsuario().equals(usuario) && e.getContrasena().equals(contrasena)){
+                     cond=false;
+                     if(e instanceof Funcionario){
+                         presentarMenuFuncionario();
+                     }
+                     else{
+                        presentarMenuAdministrador();
+                     }
+                break;
+              }
+        }
+           if(cond==true){
+               System.out.println("Contraseña o usuarios Inválidos, vuelva a ingresar");
+               System.out.println("Ingrese su usuario y contraseña");
+               System.out.println("Usuario:");
+               usuario = sc.nextLine();
+               System.out.println("Contraseña:");
+               contrasena = sc.nextLine();
+            }             
         
-      
+        }     
     }
     
     

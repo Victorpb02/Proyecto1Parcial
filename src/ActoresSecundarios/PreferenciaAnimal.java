@@ -21,6 +21,18 @@ public class PreferenciaAnimal {
         this.raza = raza;
         this.sexo = sexo;
     }
+
+    public String getTipoAnimal() {
+        return tipoAnimal;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
     
     
 }
