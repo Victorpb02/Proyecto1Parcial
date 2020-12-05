@@ -27,10 +27,11 @@ public class Sistema {
     }
     
     public void presentarMenuFuncionario(){
+        String respuesta = "";
         System.out.println("Bienvenido/a al menú FUNCIONARIO de la  fundación Amigo de cuatro patas! ");
         System.out.println("Escoja una opcion: ");
         System.out.println("1. Registrar nuevo animal");
-        System.out.println("2. Consultar animale en la fundacion");
+        System.out.println("2. Consultar animales en la fundacion");
         System.out.println("3. Registrar interesado adopcion");
         System.out.println("4. Registrar adopcion");
         System.out.println("5. Consultar adopciones");
@@ -40,22 +41,58 @@ public class Sistema {
         switch (opcion){
             case "1":
                 fd.registrarAnimal();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuFuncionario();
+                }else{
+                    break;
+                }    
             case "2":
                 fd.consultarAnimal();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuFuncionario();
+                }else{
+                    break;
+                    }
             case "3":
                 fd.registrarAdoptante();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuFuncionario();
+                }else{
+                    break;
+                    }
             case "4":
                 fd.registrarAdopciones();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuFuncionario();
+                }else if(respuesta.toLowerCase().equals("no")){
+                    break;
+                 }
             case "5":
                 fd.consultarAdopciones();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuFuncionario();
+                }else{
+                    break;
+                    }
             case "6":
                 fd.consultarAdoptante();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuFuncionario();
+                }else{
+                    break;
+                    }
             case "7":
                 System.out.println("Se ha cerrado la sesión");
                 iniciarSistema();

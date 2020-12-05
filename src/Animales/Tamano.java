@@ -10,5 +10,5 @@ package Animales;
  * @author UserPC
  */
 public enum Tamano {
-    Pequeno, Mediano, Grande 
+    PEQUENO, MEDIANO, GRANDE
 }

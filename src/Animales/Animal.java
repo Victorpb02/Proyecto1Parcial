@@ -21,7 +21,7 @@ public abstract class Animal
     private int edad;
     private double peso;
     private ArrayList<String> observaciones;
-    private static int codigo;
+    private static int codigo = 0;
     private String estado;
     private TipoAnimal tipo;
     
@@ -36,8 +36,8 @@ public abstract class Animal
         this.sexo=sexo;
         this.edad=edad;
         this.peso=peso;
-        ArrayList<String> observaciones = new ArrayList();  
-        this.codigo=codigo;
+        this.observaciones = new ArrayList<String>();  
+        codigo++;
         this.estado = "No adoptado";
     }
 
@@ -94,13 +94,16 @@ public abstract class Animal
         this.observaciones = observaciones;
     }
     
+    public void agregarObservacion(String o){
+        observaciones.add(o);
+    }
     
     public abstract double calcularCosto();
     
     @Override
     public String toString() {
-        return "fechaIngreso: " + fechaIngreso + ", nombre: " + nombre + ", raza: " + raza + 
-                ", sexo: " + sexo + ", edad: " + edad + ", peso: " + peso + ", observaciones: " + observaciones + ", codigo: " + codigo + ", estado: " + estado + ", tipo: " + tipo;
+        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s %-10s\n",fechaIngreso, nombre, raza, sexo, peso, edad,"", observaciones, codigo);
+        return "";
     }
     
     

@@ -17,6 +17,11 @@ public class Gato extends Animal {
     public Gato(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, int edad, double peso){
             super(fechaIngreso, nombre, raza, sexo,edad,peso);
           }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public double calcularCosto(){
         if (getEdad()<8){
@@ -25,5 +30,5 @@ public class Gato extends Animal {
             return 2.8*5;
         }
     }
-    
+
 }

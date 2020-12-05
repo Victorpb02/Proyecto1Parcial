@@ -10,5 +10,5 @@ package Animales;
  * @author UserPC
  */
 public enum TipoAnimal {
-    Perro, Gato
+    PERRO, GATO, SINDEFINIR
 }

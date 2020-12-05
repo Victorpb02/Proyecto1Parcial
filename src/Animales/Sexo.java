@@ -10,5 +10,5 @@ package Animales;
  * @author UserPC
  */
 public enum Sexo {
-    Macho, Hembra
+    MACHO, HEMBRA, INDEFINIDO
 }
