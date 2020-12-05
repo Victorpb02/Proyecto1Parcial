@@ -22,6 +22,12 @@ public class Veterinaria {
         this.contacto=contacto;
         this.correo = correo;
     }
+
+    @Override
+    public String toString() {
+        return "Veterinaria{" + "nombre=" + nombre + ", contacto=" + contacto + ", correo=" + correo + '}';
+    }
+    
     
     
     

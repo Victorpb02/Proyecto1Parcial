@@ -19,7 +19,7 @@ public class Main {
          Sistema sistem = new Sistema();
          sistem.iniciarSistema();
         
-        // TODO code application logic hereusua
+        // TODO code application logic hereu
         
 
     }

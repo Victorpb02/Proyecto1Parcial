@@ -18,7 +18,6 @@ public class Adoptante {
     private String identificacion;
     private String direccion;
     private String telefono;
-    private CasaCorreo correo;
     private String dcorreo;
     private PreferenciaAnimal preferencia;
     private int animalesAdoptados;
@@ -26,7 +25,7 @@ public class Adoptante {
     
     
     public Adoptante(String nombre, String identificacion, String direccion, String telefono,
-                                       String correo, PreferenciaAnimal preferencia, int animalesAdoptados){
+                                       String dcorreo, PreferenciaAnimal preferencia, int animalesAdoptados){
         this.nombre=nombre;
         this.identificacion = identificacion;
         this.direccion = direccion;
@@ -40,6 +39,11 @@ public class Adoptante {
     @Override
     public String toString() {
         return "Adoptante: " + "nombre=" + nombre + ", identificacion=" + identificacion + ", animalesAdoptados=" + animalesAdoptados;
+    }
+    
+    
+    public String toString1(){
+        return "Nombre: "+nombre+" Identificación: "+identificacion+" Direccion: "+direccion+" Teléfono: "+telefono+" Correo: "+dcorreo;
     }
 
     public String getIdentificacion() {

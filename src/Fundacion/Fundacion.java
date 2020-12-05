@@ -64,7 +64,7 @@ public class Fundacion {
 
     public Fundacion() {
         sc = new Scanner(System.in);
-        
+
         empleados = new ArrayList<Empleado>();
         adoptantes = new ArrayList<Adoptante>();
         adopciones = new ArrayList<Adopcion>();
@@ -72,38 +72,39 @@ public class Fundacion {
         gastosVeterinarias = new ArrayList<GastoVeterinaria>();
         animales = new ArrayList<Animal>();
         LocalDate date = LocalDate.parse("2018-10-30");
-        Empleado emp1 = new Funcionario("Angel", "Florida Norte", "123456", "hola@espol.edu.ec", date, 500.23, "usuario1", "contrasena1");
+        Empleado emp1 = new Funcionario("Angel", "Florida Norte", "123456", "angdacar@espol.edu.ec", date, 500.23, "usuario1", "contrasena1");
         empleados.add(emp1);
-        Empleado emp2 = new Administrador("Rocio", "Espol", "146551", "asdasa@espol.edu.ec", date, 200.0, "usuario2", "contrasena2", "123456");
+        Empleado emp2 = new Administrador("Rocio", "Mi corazón", "654321", "remera@espol.edu.ec", date, 100.0, "usuario2", "contrasena2", "123456");
         empleados.add(emp2);
-        Animal p1 = new Perro(LocalDate.now(), "s1", "asd1", MACHO, 5, 50.2, MEDIANO);
-        //p1.generarCodigo();
+        Animal p1 = new Perro(LocalDate.now(), "Perro1", "Husky", MACHO, 3, 50.2, MEDIANO);
+
         animales.add(p1);
         ArrayList<String> sad = new ArrayList<String>();
-        sad.add("asdas");
+        sad.add("Amigable");
+        sad.add("Jugueton");
         p1.setObservaciones(sad);
-        Animal p2 = new Perro(LocalDate.now(), "s2", "asd1", HEMBRA, 5, 50.2, MEDIANO);
-        //p2.generarCodigo();
+        Animal p2 = new Perro(LocalDate.now(), "Perra1", "Husky", HEMBRA, 2, 40.5, MEDIANO);
+
         animales.add(p2);
-        Animal g1 = new Gato(LocalDate.now(), "s3", "asd3", MACHO, 5, 50.2);
-        //g1.generarCodigo();
+        Animal g1 = new Gato(LocalDate.now(), "Gato1", "Siamés", MACHO, 4, 5.0);
+
         animales.add(g1);
-        Animal g2 = new Gato(LocalDate.now(), "s4", "asdasda", MACHO, 5, 50.2);
-        //g2.generarCodigo();
+        Animal g2 = new Gato(LocalDate.now(), "Gato2", "Romano", MACHO, 3, 4.0);
+
         animales.add(g2);
-        Animal p3 = new Perro(LocalDate.now(), "s5", "asdasda", MACHO, 5, 50.2, MEDIANO);
-        //p3.generarCodigo();
+        Animal p3 = new Perro(LocalDate.now(), "Perro2", "Pitbull", MACHO, 5, 45.2, MEDIANO);
+
         animales.add(p3);
 
-        Animal g3 = new Gato(LocalDate.now(), "s6", "asdasda", MACHO, 5, 50.2);
-        //g3.generarCodigo();
+        Animal g3 = new Gato(LocalDate.now(), "Gata1", "Siamés", HEMBRA, 2, 4.0);
+
         animales.add(g3);
-        
-        Adoptante a1 = new Adoptante("Hola", "123", "sdasa", "asdas", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("asda", "asdas", MACHO), 0);
-        Adoptante a2 = new Adoptante("Hola1", "12345", "sdasa", "asdas", "", new PreferenciaAnimal("asda", "asdas", HEMBRA), 0);
+
+        Adoptante a1 = new Adoptante("Joel", "123", "Guayaquil", "0123456", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("Perro", "Husky", MACHO), 0);
         adoptantes.add(a1);
+        Adoptante a2 = new Adoptante("Alejandro", "12345", "Quito", "6543210", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("Gato", "Siamés", HEMBRA), 0);
         adoptantes.add(a2);
-        adopciones.add(new Adopcion(LocalDate.now(), 1, p1,a1));
+        adopciones.add(new Adopcion(LocalDate.now(), 1, p1, a1));
         adopciones.add(new Adopcion(LocalDate.now(), 2, p2, a2));
 
     }
@@ -112,162 +113,177 @@ public class Fundacion {
         return empleados;
     }
 
-    public void registrarAnimal(){
+    public void registrarAnimal() {
         String respuesta = "";
-        do{
-        LocalDate fechaIngreso = LocalDate.now();
-        System.out.println("Ingrese el nombre del animal: ");
-        String nombre = sc.nextLine();
-        
-        System.out.println("Ingrese la raza del animal: ");
-        String raza = sc.nextLine();
-        
-        System.out.println("Ingrese el SEXO del animal(Macho|Hembra): ");
-        String sexo = sc.nextLine();
-        
-        
-        while(!sexo.toUpperCase().equals("MACHO") && !sexo.toUpperCase().equals("HEMBRA")){
-            System.out.println(" Sexo de animal incorrecto");
+        do {
+            LocalDate fechaIngreso = LocalDate.now();
+            System.out.println("Ingrese el nombre del animal: ");
+            String nombre = sc.nextLine();
+
+            System.out.println("Ingrese la raza del animal: ");
+            String raza = sc.nextLine();
+
             System.out.println("Ingrese el SEXO del animal(Macho|Hembra): ");
-            sexo = sc.nextLine();
-        }
-        Sexo sexo1 = null;
-        if(sexo.toUpperCase().equals("MACHO") || sexo.toUpperCase().equals("HEMBRA")){
-            sexo1 = Sexo.valueOf(sexo.toUpperCase());
-        }
-        
-        System.out.println("Ingrese el peso del animal (el separador es una coma): ");
-        Double peso = sc.nextDouble();
-        sc.nextLine();
-        
-        System.out.println("Ingrese la edad del animal: ");
-        int edad = sc.nextInt();
-        sc.nextLine();
-        
-        System.out.println("Ingrese las observaciones del animal (separados por coma): ");
-        String observacion = sc.nextLine();
-        
-        String[] observaciones = observacion.split(",");
-        
-        System.out.println("Ingrese el TIPO de animal(Gato|Perro): ");
-        String tipo = sc.nextLine();
-        while(!tipo.toUpperCase().equals("PERRO") && !tipo.toUpperCase().equals("GATO")){
-            System.out.println(" Tipo de animal incorrecto");
+            String sexo = sc.nextLine();
+
+            while (!sexo.toUpperCase().equals("MACHO") && !sexo.toUpperCase().equals("HEMBRA")) {
+                System.out.println(" Sexo de animal incorrecto");
+                System.out.println("Ingrese el SEXO del animal(Macho|Hembra): ");
+                sexo = sc.nextLine();
+            }
+            Sexo sexo1 = null;
+            if (sexo.toUpperCase().equals("MACHO") || sexo.toUpperCase().equals("HEMBRA")) {
+                sexo1 = Sexo.valueOf(sexo.toUpperCase());
+            }
+
+            System.out.println("Ingrese el peso del animal (el separador es una coma): ");
+            Double peso = sc.nextDouble();
+            sc.nextLine();
+
+            System.out.println("Ingrese la edad del animal: ");
+            int edad = sc.nextInt();
+            sc.nextLine();
+
+            System.out.println("Ingrese las observaciones del animal (separados por coma): ");
+            String observacion = sc.nextLine();
+
+            String[] observaciones = observacion.split(",");
+
             System.out.println("Ingrese el TIPO de animal(Gato|Perro): ");
-            tipo = sc.nextLine();
-        }
-        if (tipo.toUpperCase().equals("PERRO")){
-            System.out.println("Ingrese el tamaño del perro(Grande, mediano o Pequeno): ");
-            String taman = sc.nextLine();
-            
-            while (!taman.toUpperCase().equals("GRANDE") && !taman.toUpperCase().equals("PEQUENO") && !taman.toUpperCase().equals("MEDIANO")){
-            System.out.println("Tamaño de animal incorrecto");
-            System.out.println("Ingrese el tamaño del perro(Grande, mediano o Pequeno): ");
-            taman = sc.nextLine();
+            String tipo = sc.nextLine();
+            while (!tipo.toUpperCase().equals("PERRO") && !tipo.toUpperCase().equals("GATO")) {
+                System.out.println(" Tipo de animal incorrecto");
+                System.out.println("Ingrese el TIPO de animal(Gato|Perro): ");
+                tipo = sc.nextLine();
             }
-            Tamano tamanio = null;
-            if(taman.toUpperCase().equals("GRANDE") || taman.toUpperCase().equals("MEDIANO") || taman.toUpperCase().equals("PEQUENO")){
-                tamanio = Tamano.valueOf(taman.toUpperCase());
-                Animal a = new Perro(fechaIngreso, nombre, raza, sexo1, edad, peso, tamanio);
-                for(String o: observaciones){
-                    a.agregarObservacion(o);
+            if (tipo.toUpperCase().equals("PERRO")) {
+                System.out.println("Ingrese el tamaño del perro(Grande, mediano o Pequeno): ");
+                String taman = sc.nextLine();
+
+                while (!taman.toUpperCase().equals("GRANDE") && !taman.toUpperCase().equals("PEQUENO") && !taman.toUpperCase().equals("MEDIANO")) {
+                    System.out.println("Tamaño de animal incorrecto");
+                    System.out.println("Ingrese el tamaño del perro(Grande, mediano o Pequeno): ");
+                    taman = sc.nextLine();
                 }
-                animales.add(a);
-                System.out.println("Perro registrado exitosamente");
-                
-            }
-        }else if (tipo.toUpperCase().equals("GATO")){   
-                    Animal a = new Gato(fechaIngreso, nombre, raza, sexo1, edad, peso);
-                    for(String o: observaciones){
+                Tamano tamanio = null;
+                if (taman.toUpperCase().equals("GRANDE") || taman.toUpperCase().equals("MEDIANO") || taman.toUpperCase().equals("PEQUENO")) {
+                    tamanio = Tamano.valueOf(taman.toUpperCase());
+                    Animal a = new Perro(fechaIngreso, nombre, raza, sexo1, edad, peso, tamanio);
+                    for (String o : observaciones) {
                         a.agregarObservacion(o);
                     }
                     animales.add(a);
-                    System.out.println("Gato registrado exitosamente");
-                
+                    System.out.println("Perro registrado exitosamente");
+
+                }
+            } else if (tipo.toUpperCase().equals("GATO")) {
+                Animal a = new Gato(fechaIngreso, nombre, raza, sexo1, edad, peso);
+                for (String o : observaciones) {
+                    a.agregarObservacion(o);
+                }
+                animales.add(a);
+                System.out.println("Gato registrado exitosamente");
+
             }
-        
+
             System.out.println("¿Desea registrar otro animal?(si/no)");
             respuesta = sc.nextLine();
-        }while(respuesta.toLowerCase().equals("si"));
+        } while (respuesta.toLowerCase().equals("si"));
 
     }
 
     public void registrarEmpleado() {
-        System.out.println("Ingrese el nombre completo: ");
-        String nombre = sc.nextLine();
-        System.out.println("Ingrese la direccion: ");
-        String direccion = sc.nextLine();
-        System.out.println("Ingrese su telefono: ");
-        String telefono = sc.nextLine();
-        System.out.println("Ingrese su direccion correo: ");
-        String dcorreo = sc.nextLine();
-        System.out.println("Ingrese la fecha cuando empezó a trabajar(AA-MM-DD)");
-        String f = sc.nextLine();
-        LocalDate date = LocalDate.parse(f);
-        System.out.println("Ingrese su suedlo");
-        double sueldo = sc.nextDouble();
-        sc.nextLine();
-        System.out.println("Escriba un usuario para su cuenta");
-        String usuario = sc.nextLine();
-        int cont = 0;
-        while (cont != empleados.size()) {
-            for (Empleado emp : empleados) {
-                if (!emp.getUsuario().equals(usuario)) {
-                    cont++;
+        String respuesta = "";
+        do {
+            System.out.println("Ingrese el nombre completo: ");
+            String nombre = sc.nextLine();
+            System.out.println("Ingrese la direccion: ");
+            String direccion = sc.nextLine();
+            System.out.println("Ingrese su telefono: ");
+            String telefono = sc.nextLine();
+            System.out.println("Ingrese su direccion correo: ");
+            String dcorreo = sc.nextLine();
+            System.out.println("Ingrese la fecha cuando empezó a trabajar(AA-MM-DD)");
+            String f = sc.nextLine();
+            LocalDate date = LocalDate.parse(f);
+            System.out.println("Ingrese su sueldo");
+            double sueldo = sc.nextDouble();
+            sc.nextLine();
+            System.out.println("Escriba un usuario para su cuenta");
+            String usuario = sc.nextLine();
+            int cont = 0;
+            while (cont != empleados.size()) {
+                for (Empleado emp : empleados) {
+                    if (!emp.getUsuario().equals(usuario)) {
+                        cont++;
+                    }
+                }
+                if (cont == empleados.size()) {
+                    System.out.println("Usuario registrado");
+                } else {
+                    System.out.println("Usuario existente, ingrese uno nuevo");
+                    System.out.println("Escriba un usuario para su cuenta");
+                    usuario = sc.nextLine();
+                    cont = 0;
                 }
             }
-            if (cont == empleados.size()) {
-                System.out.println("Usuario registrado");
+            System.out.println("Escriba una contraseña para su cuenta");
+            String contrasena = sc.nextLine();
+            System.out.println("¿Desea fijar al empleado como administrador?(si/no)");
+            String resp = sc.nextLine();
+            if (resp.toLowerCase().equals("si")) {
+                System.out.println("Ingrese su numero de cuenta bancaria: ");
+                String cuenta = sc.nextLine();
+                empleados.add(new Administrador(nombre, direccion, telefono, dcorreo, date, sueldo, usuario, contrasena, cuenta));
+                System.out.println("Empleado agregado correctamente");
+                System.out.println("Administador fijado correctamente");
             } else {
-                System.out.println("Usuario existente, ingrese uno nuevo");
-                System.out.println("Escriba un usuario para su cuenta");
-                usuario = sc.nextLine();
+                empleados.add(new Funcionario(nombre, direccion, telefono, dcorreo, date, sueldo, usuario, contrasena));
+                System.out.println("Empleado agregado correctamente");
             }
-        }
-
-        System.out.println("Escriba una contraseña para su cuenta");
-        String contrasena = sc.nextLine();
-
+            System.out.println("¿Desea registrar otro empleado?(si/no)");
+            respuesta = sc.nextLine();
+        } while (respuesta.equals("si"));
     }
 
     public void registrarAdoptante() {
         String respuesta = "";
-        do{
-        System.out.println("Ingrese el nombre del interesado: ");
-        String nombre = sc.nextLine();
-        System.out.println("Ingrese el número de identificación del interesado: ");
-        String id = sc.nextLine();
-        System.out.println("Ingrese la dirección del interesado: ");
-        String direccion = sc.nextLine();
-        System.out.println("Ingrese el número de teléfono del interesado: ");
-        String telefono = sc.nextLine();
-        System.out.println("Ingrese el correo electrónico del interesado: ");
-        String correo = sc.nextLine();
-        System.out.println("A continuación ingrese las preferencias respecto a la adopción:");
-        System.out.println("Ingrese el tipo de animal");
-        String tipo = sc.nextLine();
-        System.out.println("Ingrese la raza del animal: ");
-        String raza = sc.nextLine();
-        System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(Escriba 'nada' si no desea filtrar)): ");
-        String sexo = sc.nextLine();
-
-        while (!sexo.toUpperCase().equals("MACHO") && !sexo.toUpperCase().equals("HEMBRA") && !sexo.toUpperCase().equals("nada")) {
-            System.out.println(" Sexo de animal incorrecto");
+        do {
+            System.out.println("Ingrese el nombre del interesado: ");
+            String nombre = sc.nextLine();
+            System.out.println("Ingrese el número de identificación del interesado: ");
+            String id = sc.nextLine();
+            System.out.println("Ingrese la dirección del interesado: ");
+            String direccion = sc.nextLine();
+            System.out.println("Ingrese el número de teléfono del interesado: ");
+            String telefono = sc.nextLine();
+            System.out.println("Ingrese el correo electrónico del interesado: ");
+            String correo = sc.nextLine();
+            System.out.println("A continuación ingrese las preferencias respecto a la adopción:");
+            System.out.println("Ingrese el tipo de animal");
+            String tipo = sc.nextLine();
+            System.out.println("Ingrese la raza del animal: ");
+            String raza = sc.nextLine();
             System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(Escriba 'nada' si no desea filtrar)): ");
-            sexo = sc.nextLine();
-        }
-        Sexo sexo1 = null;
-        if (sexo.toUpperCase().equals("MACHO") || sexo.toUpperCase().equals("HEMBRA")) {
-            sexo1 = Sexo.valueOf(sexo.toUpperCase());
-        }
+            String sexo = sc.nextLine();
 
-        PreferenciaAnimal pa = new PreferenciaAnimal(tipo, raza, sexo1);
-        Adoptante a = new Adoptante(nombre, id, direccion, telefono, correo, pa, 0);
-        adoptantes.add(a);
-        System.out.println("Adoptante registrado con éxito");
-        System.out.println("¿Desea registrar otro adopatante?(si/no");
-        respuesta = sc.nextLine();
-        }while(respuesta.toLowerCase().equals("si"));
+            while (!sexo.toUpperCase().equals("MACHO") && !sexo.toUpperCase().equals("HEMBRA") && !sexo.toUpperCase().equals("nada")) {
+                System.out.println(" Sexo de animal incorrecto");
+                System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(Escriba 'nada' si no desea filtrar)): ");
+                sexo = sc.nextLine();
+            }
+            Sexo sexo1 = null;
+            if (sexo.toUpperCase().equals("MACHO") || sexo.toUpperCase().equals("HEMBRA")) {
+                sexo1 = Sexo.valueOf(sexo.toUpperCase());
+            }
+
+            PreferenciaAnimal pa = new PreferenciaAnimal(tipo, raza, sexo1);
+            Adoptante a = new Adoptante(nombre, id, direccion, telefono, correo, pa, 0);
+            adoptantes.add(a);
+            System.out.println("Adoptante registrado con éxito");
+            System.out.println("¿Desea registrar otro adopatante?(si/no");
+            respuesta = sc.nextLine();
+        } while (respuesta.toLowerCase().equals("si"));
     }
 
     public void registrarAdopciones() {
@@ -354,18 +370,16 @@ public class Fundacion {
 
         System.out.println("Ingrese la RAZA del animal(Raza|(Escriba 'nada' si no desea filtrar)): ");
         String raza = sc.nextLine();
-        /*if(raza.equals("nada")){
-            raza = null;
-        } */
 
-            System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n",
-                    "Fecha de Ingreso", "Nombre", "Raza", "Sexo", "Peso", "Edad", "Tamanio", "Observaciones");
-            Filtrado f = new Filtrado();
-            for (Animal a : animales) {
-                f.filtrar(sexo1, tipo1, raza, a);
-                
-            }
+        System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n",
+                "Fecha de Ingreso", "Nombre", "Raza", "Sexo", "Peso", "Edad", "Tamanio", "Observaciones");
+        Filtrado f = new Filtrado();
+        for (Animal a : animales) {
+            f.filtrar(sexo1, tipo1, raza, a);
+
+        }
     }
+
     public void consultarAdoptante() {
         for (Adoptante a : adoptantes) {
             System.out.println(a.toString());
@@ -376,7 +390,7 @@ public class Fundacion {
         for (Adopcion p : adopciones) {
             Adoptante adop = p.getAdoptante();
             if (adop.getIdentificacion().equals(nCedula)) {
-                System.out.println(p.toString());
+                System.out.println(p.toString1());
             }
         }
     }
@@ -403,32 +417,32 @@ public class Fundacion {
 
         System.out.println("¿Desea consultar o registrar una veterinaria?: ");
         String rm = sc.nextLine();
-        while (!rm.toLowerCase().equals("consultar") || !rm.toLowerCase().equals("registrar")) {
+        while (!rm.toLowerCase().equals("consultar") && !rm.toLowerCase().equals("registrar")) {
             System.out.println("Opción inválida");
             System.out.println("¿Desea consultar o registrar una veterinaria?: ");
             rm = sc.nextLine();
-            if (rm.equals("consultar")) {
-                for (Veterinaria v : veterinarias) {
-                    System.out.println(v.toString());
-                }
-
-            } else if (rm.equals("registrar")) {
-                System.out.println("Ingrese el nombre de la veterinaria: ");
-                String nombre = sc.nextLine();
-                System.out.println("Ingrese el número de la veterinaria: ");
-                String numero = sc.nextLine();
-                System.out.println("Ingrese el corre de la veterinaria: ");
-                String correo = sc.nextLine();
-
-                veterinarias.add(new Veterinaria(nombre, numero, correo));
+        }
+        if (rm.toLowerCase().equals("consultar")) {
+            for (Veterinaria v : veterinarias) {
+                System.out.println(v.toString());
             }
+
+        } else if (rm.equals("registrar")) {
+            System.out.println("Ingrese el nombre de la veterinaria: ");
+            String nombre = sc.nextLine();
+            System.out.println("Ingrese el número de la veterinaria: ");
+            String numero = sc.nextLine();
+            System.out.println("Ingrese el corre de la veterinaria: ");
+            String correo = sc.nextLine();
+
+            veterinarias.add(new Veterinaria(nombre, numero, correo));
         }
     }
 
     public void CyRGastoVeterinaria() {
         System.out.println("¿Desea consultar o registrar un gasto?: ");
         String es = sc.nextLine();
-        while (!es.toLowerCase().equals("consultar") || !es.toLowerCase().equals("registrar")) {
+        while (!es.toLowerCase().equals("consultar") && !es.toLowerCase().equals("registrar")) {
             System.out.println("Opción inválida");
             System.out.println("¿Desea consultar o registrar una veterinaria?: ");
             es = sc.nextLine();
@@ -443,11 +457,15 @@ public class Fundacion {
                 }
             }
 
-        } else if (es.equals("registrar")) {
+        } else if (es.toLowerCase().equals("registrar")) {
+            String respuesta = "";
+            do{
             System.out.println("Ingrese el monto incurrido: ");
             Double monto = sc.nextDouble();
+            sc.nextLine();
             System.out.println("Ingrese el código del animal: ");
             int codigo = sc.nextInt();
+            sc.nextLine();
             Animal a1 = null;
             for (Animal a : animales) {
                 if (codigo == a.getCodigo()) {
@@ -455,9 +473,10 @@ public class Fundacion {
                 }
             }
             gastosVeterinarias.add(new GastoVeterinaria(monto, LocalDate.now(), a1));
-
+            System.out.println("¿Desea registrar otro gasto?");
+            respuesta = sc.nextLine();
+        }while(respuesta.toLowerCase().equals("si"));
         }
-
     }
 
     public double calcularPresupuestoMensual() {
@@ -512,10 +531,13 @@ public class Fundacion {
     }
 
     public void enviarCorreo() {
+        TipoAnimal animal = SINDEFINIR;
         for (Adoptante ad : adoptantes) {
             PreferenciaAnimal preferencia = ad.getPreferencia();
+            animal = TipoAnimal.valueOf(preferencia.getTipoAnimal().toUpperCase());
             for (Animal a : animales) {
-                if (preferencia.getTipoAnimal().equals(a.getTipo()) && preferencia.getSexo().equals(a.getSexo()) && preferencia.getRaza().equals(a.getRaza())) {
+
+                if (animal.equals(a.getTipo()) && preferencia.getSexo().equals(a.getSexo()) && preferencia.getRaza().equals(a.getRaza())) {
                     String dcorreo = ad.getDcorreo();
                     String correo = a.toString();
                     Properties props = new Properties();

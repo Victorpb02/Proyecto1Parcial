@@ -8,6 +8,7 @@ package Animales;
 import static Animales.Tamano.GRANDE;
 import static Animales.Tamano.MEDIANO;
 import static Animales.Tamano.PEQUENO;
+import static Animales.TipoAnimal.PERRO;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class Perro extends Animal {
     public Perro(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo,  int edad, double peso,Tamano tamanio){
         super(fechaIngreso, nombre, raza, sexo,edad,peso);
         this.tamanio=tamanio;
+        setTipo(PERRO);
     }
 
     public Tamano getTamanio() {
@@ -44,7 +46,7 @@ public class Perro extends Animal {
     
     @Override
     public String toString(){
-        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s %-10s\n",getFechaIngreso(), getNombre(), getRaza(), getSexo(), getPeso(), getEdad(),tamanio, getObservaciones(), getCodigo());
+        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s \n",getFechaIngreso(), getNombre(), getRaza(), getSexo(), getPeso(), getEdad(),tamanio, getObservaciones());
         return "";
     }
     

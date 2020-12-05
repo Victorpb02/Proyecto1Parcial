@@ -101,6 +101,7 @@ public class Sistema {
     }
     
     public void presentarMenuAdministrador(){
+        String respuesta = "";
         System.out.println("Bienvenido/a al menú ADMINISTRADOR de la  fundación Amigo de cuatro patas! ");
         System.out.println("Escoja una opcion: ");
         System.out.println("1. Registrar empleados");
@@ -113,19 +114,49 @@ public class Sistema {
         switch(opcion){
             case "1":
                 fd.registrarEmpleado();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuAdministrador();
+                }else if(respuesta.toLowerCase().equals("no")){
+                    break;
+                }
             case "2":
                 fd.CyRVeterinarias();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                     presentarMenuAdministrador();
+                }else if(respuesta.toLowerCase().equals("no")){
+                    break;
+                }    
             case "3":
                 fd.CyRGastoVeterinaria();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                     presentarMenuAdministrador();
+                }else if(respuesta.toLowerCase().equals("no")){
+                    break;
+                }
             case "4":
                 fd.calcularPresupuestoMensual();
-                break;
+                System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                    presentarMenuAdministrador();
+                }else if(respuesta.toLowerCase().equals("no")){
+                    break;
+                }
             case "5":
                 fd.enviarCorreo();
-                break;
+                 System.out.println("¿Desea regresar al menú principal?(si/no)");
+                respuesta = sc.nextLine();
+                if (respuesta.toLowerCase().equals("si")){
+                     presentarMenuAdministrador();
+                }else if(respuesta.toLowerCase().equals("no")){
+                    break;
+                }
             case "6":
                 System.out.println("Se ha cerrado la sesión.");
                 iniciarSistema();

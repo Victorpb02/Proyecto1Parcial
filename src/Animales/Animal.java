@@ -70,6 +70,10 @@ public abstract class Animal
     public TipoAnimal getTipo() {
         return tipo;
     }
+
+    public void setTipo(TipoAnimal tipo) {
+        this.tipo = tipo;
+    }
     
 
     public ArrayList<String> getObservaciones() {
@@ -92,9 +96,7 @@ public abstract class Animal
         return estado;
     }
     
-    public int generarCodigo(){
-        return codigo+=1;
-    }
+
 
     public void setEstado(String estado) {
         this.estado = estado;
@@ -112,8 +114,13 @@ public abstract class Animal
     
     @Override
     public String toString() {
-        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s %-10s\n",fechaIngreso, nombre, raza, sexo, peso, edad,"", observaciones, codigo);
+        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s\n",fechaIngreso, nombre, raza, sexo, peso, edad,"", observaciones);
         return "";
+    }
+    
+    
+    public String toString1(){
+        return "Código: "+codigo+" Tipo: "+tipo+" Sexo: "+sexo;
     }
     
     

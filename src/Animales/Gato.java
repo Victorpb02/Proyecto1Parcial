@@ -5,6 +5,7 @@
  */
 package Animales;
 
+import static Animales.TipoAnimal.GATO;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -16,7 +17,9 @@ public class Gato extends Animal {
         
     public Gato(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, int edad, double peso){
             super(fechaIngreso, nombre, raza, sexo,edad,peso);
+            setTipo(GATO);
           }
+    
 
     /**
      *
