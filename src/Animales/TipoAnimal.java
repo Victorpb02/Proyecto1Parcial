@@ -6,7 +6,7 @@
 package Animales;
 
 /**
- *
+ *Clase Enum
  * @author UserPC
  */
 public enum TipoAnimal {

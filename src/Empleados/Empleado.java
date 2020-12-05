@@ -13,6 +13,7 @@ import java.util.Date;
  * @author UserPC
  */
 public class Empleado {
+    //Creación de variables de instancia
     private String nombre;
     private String direccion;
     private String telefono;
@@ -21,10 +22,7 @@ public class Empleado {
     private double sueldo;
     private String usuario;
     private String contrasena;
-
-    public Empleado() {
-    }
-    
+    //constructor
     public Empleado(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -35,7 +33,7 @@ public class Empleado {
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
-
+    //getters
     public String getUsuario() {
         return usuario;
     }
@@ -51,9 +49,5 @@ public class Empleado {
     public String getDcorreo() {
         return dcorreo;
     }
-    
 
-    
-    
-    
 }

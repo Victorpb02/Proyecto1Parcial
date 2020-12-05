@@ -14,21 +14,24 @@ import static Animales.Sexo.MACHO;
 import Animales.TipoAnimal;
 
 /**
- *
+ *En esta clase se crea el método que sirve para 
+ *filtrar animales.
  * @author Personal
  */
 public class Filtrado {
-
+    //1. Se verifica el tipo de Animal para entrar en un caso.
+    //2. Verifica la raza para mostrar el animal con esas características.
     public void filtrar(Sexo sexo, TipoAnimal tipo, String raza, Animal a) {
         switch (tipo) {
             case PERRO:
                 if (a instanceof Perro) {
                     Perro p = (Perro) a;
+                    //Verifica el sexo para entrar en un caso.
                     switch (sexo) {
                         case MACHO:
-                            if (p.getSexo().equals(MACHO)) {
+                            if (p.getSexo().equals(MACHO)) {                               
                                 if (!raza.equals("nada")) {
-                                    if (raza.equals(p.getRaza())) {
+                                    if (raza.equals(p.getRaza().toLowerCase())) {
                                         p.toString();
                                     }
                                 } else {
@@ -39,7 +42,7 @@ public class Filtrado {
                         case HEMBRA:
                             if (p.getSexo().equals(HEMBRA)) {
                                 if (!raza.equals("nada")) {
-                                    if (raza.equals(p.getRaza())) {
+                                    if (raza.equals(p.getRaza().toLowerCase())) {
                                         p.toString();
                                     }
                                 } else {
@@ -49,7 +52,7 @@ public class Filtrado {
                             break;
                         case INDEFINIDO:
                             if (!raza.equals("nada")) {
-                                if (raza.equals(p.getRaza())) {
+                                if (raza.equals(p.getRaza().toLowerCase())) {
                                     p.toString();
                                 }
                             } else {
@@ -57,9 +60,7 @@ public class Filtrado {
                             }
                     }
                 }
-
                 break;
-
             case GATO:
                 if (a instanceof Gato) {
                     Gato g = (Gato) a;
@@ -67,7 +68,7 @@ public class Filtrado {
                         case MACHO:
                             if (g.getSexo().equals(MACHO)) {
                                 if (!raza.equals("nada")) {
-                                    if (raza.equals(g.getRaza())) {
+                                    if (raza.equals(g.getRaza().toLowerCase())) {
                                         g.toString();
                                     }
                                 } else {
@@ -78,8 +79,9 @@ public class Filtrado {
                         case HEMBRA:
                             if (g.getSexo().equals(HEMBRA)) {
                                 if (!raza.equals("nada")) {
-                                    if (raza.equals(g.getRaza())) {
+                                    if (raza.equals(g.getRaza().toLowerCase())) {
                                         g.toString();
+                                        break;
                                     }
                                 } else {
                                     g.toString();
@@ -88,7 +90,7 @@ public class Filtrado {
                             break;
                         case INDEFINIDO:
                             if (!raza.equals("nada")) {
-                                if (raza.equals(g.getRaza())) {
+                                if (raza.equals(g.getRaza().toLowerCase())) {
                                     g.toString();
                                 }
                             } else {
@@ -96,12 +98,13 @@ public class Filtrado {
                             }
                     }
                 }
+                break;
             case SINDEFINIR:
                 switch (sexo) {
                     case MACHO:
                         if (a.getSexo().equals(MACHO)) {
                             if (!raza.equals("nada")) {
-                                if (raza.equals(a.getRaza())) {
+                                if (raza.equals(a.getRaza().toLowerCase())) {
                                     a.toString();
                                 }
                             } else {
@@ -112,7 +115,7 @@ public class Filtrado {
                     case HEMBRA:
                         if (a.getSexo().equals(HEMBRA)) {
                             if (!raza.equals("nada")) {
-                                if (raza.equals(a.getRaza())) {
+                                if (raza.equals(a.getRaza().toLowerCase())) {
                                     a.toString();
                                 }
                             } else {
@@ -122,15 +125,14 @@ public class Filtrado {
                         break;
                     case INDEFINIDO:
                         if (!raza.equals("nada")) {
-                            if (raza.equals(a.getRaza())) {
+                            if (raza.equals(a.getRaza().toLowerCase())) {
                                 a.toString();
                             }
                         } else {
                             a.toString();
                         }
                 }
+                break;
         }
-
     }
-
 }

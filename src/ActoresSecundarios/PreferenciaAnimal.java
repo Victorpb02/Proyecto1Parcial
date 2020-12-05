@@ -12,16 +12,17 @@ import Animales.Sexo;
  * @author UserPC
  */
 public class PreferenciaAnimal {
+    //variables de instancia
     private String tipoAnimal;
     private String raza;
     private Sexo sexo;
-
+    //constructor
     public PreferenciaAnimal(String tipoAnimal, String raza, Sexo sexo) {
         this.tipoAnimal = tipoAnimal;
         this.raza = raza;
         this.sexo = sexo;
     }
-
+    //getters
     public String getTipoAnimal() {
         return tipoAnimal;
     }
@@ -33,6 +34,5 @@ public class PreferenciaAnimal {
     public Sexo getSexo() {
         return sexo;
     }
-    
-    
+
 }

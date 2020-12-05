@@ -12,8 +12,8 @@ import java.util.ArrayList;
  *
  * @author UserPC
  */
-public abstract class Animal 
-{
+public abstract class Animal {
+    //variables de instancia
     private LocalDate fechaIngreso;
     private String nombre;
     private String raza;
@@ -25,24 +25,21 @@ public abstract class Animal
     private static int entero = 0;
     private String estado;
     private TipoAnimal tipo;
-    
-    
-    
-    public Animal(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, 
-                                int edad, double peso)
-    {
-        this.fechaIngreso=fechaIngreso;
-        this.nombre=nombre;
-        this.raza=raza;
-        this.sexo=sexo;
-        this.edad=edad;
-        this.peso=peso;
-        this.observaciones = new ArrayList<String>();  
+    //constructor
+    public Animal(LocalDate fechaIngreso, String nombre, String raza, Sexo sexo,
+            int edad, double peso) {
+        this.fechaIngreso = fechaIngreso;
+        this.nombre = nombre;
+        this.raza = raza;
+        this.sexo = sexo;
+        this.edad = edad;
+        this.peso = peso;
+        this.observaciones = new ArrayList<String>();
         this.estado = "No adoptado";
-        codigo = entero +1;
+        codigo = entero + 1;
         entero++;
     }
-
+    //getters
     public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
@@ -74,7 +71,6 @@ public abstract class Animal
     public void setTipo(TipoAnimal tipo) {
         this.tipo = tipo;
     }
-    
 
     public ArrayList<String> getObservaciones() {
         return observaciones;
@@ -83,21 +79,10 @@ public abstract class Animal
     public int getCodigo() {
         return codigo;
     }
-
-    public int getEntero() {
-        return entero;
-    }
-
-    
-    
-    
-    
     public String getEstado() {
         return estado;
     }
-    
-
-
+    //setters
     public void setEstado(String estado) {
         this.estado = estado;
     }
@@ -106,24 +91,24 @@ public abstract class Animal
         this.observaciones = observaciones;
     }
     
-    public void agregarObservacion(String o){
+    public void agregarObservacion(String o) {
         observaciones.add(o);
     }
-    
+    //método sin implementar
     public abstract double calcularCosto();
-    
+    //métodos toString para diferentes funcionalidades
     @Override
     public String toString() {
-        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s\n",fechaIngreso, nombre, raza, sexo, peso, edad,"", observaciones);
+        System.out.printf("%-16s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", fechaIngreso, nombre, raza, sexo, peso, edad, "", observaciones);
         return "";
     }
-    
-    
-    public String toString1(){
-        return "Código: "+codigo+" Tipo: "+tipo+" Sexo: "+sexo;
-    }
-    
-    
-    
 
+    public String toString1() {
+        return "Código: " + codigo + " Tipo: " + tipo + " Sexo: " + sexo;
     }
+    
+    public String toString2() {
+        return "Nombre: "+nombre+" Raza: "+raza+ " Tipo: " + tipo + " Sexo: " + sexo+" Peso: "+peso+ " Edad: "+edad+" Código: " + codigo ;
+    }
+
+}

@@ -12,14 +12,13 @@ import java.util.Date;
  *
  * @author UserPC
  */
-public class Administrador extends Empleado{
-    
+public class Administrador extends Empleado {
+    //vaiable de instancia
     private String cuentaBancaria;
-
-    
-    public Administrador(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena,String cuentaBancaria) {
+    //constructor
+    public Administrador(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena, String cuentaBancaria) {
         super(nombre, direccion, telefono, dcorreo, fechaInicio, sueldo, usuario, contrasena);
-        this.cuentaBancaria= cuentaBancaria;
+        this.cuentaBancaria = cuentaBancaria;
     }
-                                             //  "Rocio", "Espol", "146551", "asdasa@espol.edu.ec", date, 200, "hola1", "usuario2", "contrasena2"
+
 }

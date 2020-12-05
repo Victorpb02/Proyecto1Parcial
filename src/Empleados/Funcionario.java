@@ -13,10 +13,10 @@ import java.util.Date;
  * @author UserPC
  */
 public class Funcionario extends Empleado {
-    
-    public Funcionario(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena){
+    //constructor
+    public Funcionario(String nombre, String direccion, String telefono, String dcorreo, LocalDate fechaInicio, double sueldo, String usuario, String contrasena) {
         super(nombre, direccion, telefono, dcorreo, fechaInicio, sueldo, usuario, contrasena);
-        
-    } 
-    
+
+    }
+
 }

@@ -17,39 +17,42 @@ import java.util.ArrayList;
  * @author UserPC
  */
 public class Perro extends Animal {
+    //variable de instancia
     private Tamano tamanio;
-    
-    public Perro(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo,  int edad, double peso,Tamano tamanio){
-        super(fechaIngreso, nombre, raza, sexo,edad,peso);
-        this.tamanio=tamanio;
+    //constructor
+    public Perro(LocalDate fechaIngreso, String nombre, String raza, Sexo sexo, int edad, double peso, Tamano tamanio) {
+        super(fechaIngreso, nombre, raza, sexo, edad, peso);
+        this.tamanio = tamanio;
         setTipo(PERRO);
     }
-
+    //getter
     public Tamano getTamanio() {
         return tamanio;
     }
+    
+    /**
+     * método abstracto implementado
+     * @return 
+     */
     @Override
-    public double calcularCosto(){
+    public double calcularCosto() {
         switch (tamanio) {
             case PEQUENO:
-                return (5*4)+1;
+                return (5 * 4) + 1;
             case MEDIANO:
-                return (5*6)+1;
+                return (5 * 6) + 1;
             case GRANDE:
-                return (4*10)+1;
+                return (4 * 10) + 1;
             default:
                 return 0;
         }
-        
-   
+
     }
-    
+    //toString sobreescrito
     @Override
-    public String toString(){
-        System.out.printf("%-17s %-10s %-11s %-10s %-10s %-10s %-10s %-10s \n",getFechaIngreso(), getNombre(), getRaza(), getSexo(), getPeso(), getEdad(),tamanio, getObservaciones());
+    public String toString() {
+        System.out.printf("%-16s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n", getFechaIngreso(), getNombre(), getRaza(), getSexo(), getPeso(), getEdad(), tamanio, getObservaciones());
         return "";
     }
-    
- 
-    
+
 }

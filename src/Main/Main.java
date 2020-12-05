@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Main;
+
 import interfaz.Sistema;
 
 /**
@@ -13,15 +14,14 @@ import interfaz.Sistema;
 public class Main {
 
     /**
+     * Se ejecuta el programa.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Sistema sistem = new Sistema();
-         sistem.iniciarSistema();
-        
-        // TODO code application logic hereu
-        
+        Sistema sistema = new Sistema();//Se crea un objeto de tipo Sistema.
+        sistema.iniciarSistema(); //Se inicia el programa.
 
+        
     }
-    
+
 }

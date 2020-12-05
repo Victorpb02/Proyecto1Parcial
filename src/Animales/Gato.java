@@ -14,23 +14,22 @@ import java.util.ArrayList;
  * @author UserPC
  */
 public class Gato extends Animal {
-        
-    public Gato(LocalDate fechaIngreso,String nombre, String raza, Sexo sexo, int edad, double peso){
-            super(fechaIngreso, nombre, raza, sexo,edad,peso);
-            setTipo(GATO);
-          }
-    
+    //constructor
+    public Gato(LocalDate fechaIngreso, String nombre, String raza, Sexo sexo, int edad, double peso) {
+        super(fechaIngreso, nombre, raza, sexo, edad, peso);
+        setTipo(GATO);
+    }
 
     /**
-     *
+     *método abstracto implementado
      * @return
      */
     @Override
-    public double calcularCosto(){
-        if (getEdad()<8){
-            return 2.5*3;
-        }else{
-            return 2.8*5;
+    public double calcularCosto() {
+        if (getEdad() < 8) {
+            return 2.5 * 3;
+        } else {
+            return 2.8 * 5;
         }
     }
 

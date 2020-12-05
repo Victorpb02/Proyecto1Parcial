@@ -5,7 +5,7 @@
  */
 package ActoresSecundarios;
 
-import Correos.CasaCorreo;
+
 import Registros.Adopcion;
 import java.util.ArrayList;
 
@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author UserPC
  */
 public class Adoptante {
+    //variables de instancia
     private String nombre;
     private String identificacion;
     private String direccion;
@@ -22,30 +23,28 @@ public class Adoptante {
     private PreferenciaAnimal preferencia;
     private int animalesAdoptados;
     private ArrayList<Adopcion> adopciones;
-    
-    
+    //constructor
     public Adoptante(String nombre, String identificacion, String direccion, String telefono,
-                                       String dcorreo, PreferenciaAnimal preferencia, int animalesAdoptados){
-        this.nombre=nombre;
+            String dcorreo, PreferenciaAnimal preferencia, int animalesAdoptados) {
+        this.nombre = nombre;
         this.identificacion = identificacion;
         this.direccion = direccion;
         this.telefono = telefono;
         this.dcorreo = dcorreo;
         this.preferencia = preferencia;
         this.animalesAdoptados = animalesAdoptados;
-        
-    }
 
+    }
+    //métodos toString para diferentes funcionalidades
     @Override
     public String toString() {
         return "Adoptante: " + "nombre=" + nombre + ", identificacion=" + identificacion + ", animalesAdoptados=" + animalesAdoptados;
     }
-    
-    
-    public String toString1(){
-        return "Nombre: "+nombre+" Identificación: "+identificacion+" Direccion: "+direccion+" Teléfono: "+telefono+" Correo: "+dcorreo;
-    }
 
+    public String toString1() {
+        return "Nombre: " + nombre + " Identificación: " + identificacion + " Direccion: " + direccion + " Teléfono: " + telefono + " Correo: " + dcorreo;
+    }
+    //getters
     public String getIdentificacion() {
         return identificacion;
     }
@@ -65,7 +64,7 @@ public class Adoptante {
     public PreferenciaAnimal getPreferencia() {
         return preferencia;
     }
-
+    //setter
     public void setAnimalesAdoptados(int animalesAdoptados) {
         this.animalesAdoptados = animalesAdoptados;
     }
@@ -74,7 +73,4 @@ public class Adoptante {
         return animalesAdoptados;
     }
 
-
-    
-    
 }
