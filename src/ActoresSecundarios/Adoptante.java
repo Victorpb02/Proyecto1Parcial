@@ -65,12 +65,16 @@ public class Adoptante {
     public PreferenciaAnimal getPreferencia() {
         return preferencia;
     }
-    
-    
-    
-    
 
-    
+    public void setAnimalesAdoptados(int animalesAdoptados) {
+        this.animalesAdoptados = animalesAdoptados;
+    }
+
+    public int getAnimalesAdoptados() {
+        return animalesAdoptados;
+    }
+
+
     
     
 }

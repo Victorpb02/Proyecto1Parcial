@@ -104,8 +104,12 @@ public class Fundacion {
         adoptantes.add(a1);
         Adoptante a2 = new Adoptante("Alejandro", "12345", "Quito", "6543210", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("Gato", "Siamés", HEMBRA), 0);
         adoptantes.add(a2);
-        adopciones.add(new Adopcion(LocalDate.now(), 1, p1, a1));
-        adopciones.add(new Adopcion(LocalDate.now(), 2, p2, a2));
+        adopciones.add(new Adopcion(LocalDate.now(), p1, a1));
+        a1.setAnimalesAdoptados(1);
+        p1.setEstado("Adoptado");
+        adopciones.add(new Adopcion(LocalDate.now(), p2, a2));
+        a2.setAnimalesAdoptados(1);
+        p2.setEstado("Adoptado");
 
     }
 
@@ -173,6 +177,7 @@ public class Fundacion {
                         a.agregarObservacion(o);
                     }
                     animales.add(a);
+
                     System.out.println("Perro registrado exitosamente");
 
                 }
@@ -182,6 +187,7 @@ public class Fundacion {
                     a.agregarObservacion(o);
                 }
                 animales.add(a);
+
                 System.out.println("Gato registrado exitosamente");
 
             }
@@ -287,17 +293,23 @@ public class Fundacion {
     }
 
     public void registrarAdopciones() {
+        String resp = "";
+        do{
         System.out.println("Ingrese el código del animal: ");
         int codigo = sc.nextInt();
         sc.nextLine();
         boolean c = false;
         boolean d = false;
+        Animal a1 = null;
+        Adoptante ad = null;
         do {
-            for (Adopcion a : adopciones) {
-                if (a.getAnimal().getCodigo() == codigo) {
+            for (Animal a : animales) {
+                if (a.getCodigo() == codigo) {
                     c = true;
-                    if (a.getAnimal().getEstado().equals("No adoptado")) {
-                        d = true;
+                    if (a.getEstado().equals("No adoptado")) {
+                        d = true;   
+                        a.setEstado("Adoptado");
+                        a1=a;
                         break;
                     }
                 }
@@ -312,7 +324,9 @@ public class Fundacion {
                 System.out.println("Ingrese un nuevo codigo de animal: ");
                 codigo = sc.nextInt();
                 sc.nextLine();
+                c=false;
             }
+
         } while (c == false || d == false);
 
         System.out.println("Ingrese la cédula del adoptante: ");
@@ -324,9 +338,14 @@ public class Fundacion {
             for (Adoptante a : adoptantes) {
                 if (a.getIdentificacion().equals(id)) {
                     dcorreo = a.getDcorreo(); //direccion de correo del adoptantes
-                    correo = a.toString(); // informacion que se va a mostrar en el correo
+                    //correo =// informacion que se va a mostrar en el correo
                     c = true;
+                    a.setAnimalesAdoptados(a.getAnimalesAdoptados()+1);
+                    ad=a;
+                    adopciones.add(new Adopcion(LocalDate.now(),a1,ad));
+                    correo= adopciones.get(adopciones.size()-1).toString();
                     break;
+
                 }
             }
             if (c == false) {
@@ -334,9 +353,14 @@ public class Fundacion {
                 System.out.println("Ingrese la cédula del adoptante: ");
                 id = sc.nextLine();
             }
+
         } while (c == false);
+        
         System.out.println("Adopción registrada con éxito");
-        //enviarCorreo(dcorreo, correo);
+        System.out.println("¿Desea registrar otra adopcion?(Si-No)");
+        resp= sc.nextLine();
+       enviarCorreo(dcorreo, correo);
+        }while(resp.toLowerCase().equals("si"));
     }
 
     //Consultas

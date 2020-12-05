@@ -20,7 +20,7 @@ public class Adopcion {
     private Animal animal;
     private Adoptante adoptante;
     
-    public Adopcion(LocalDate fechaAdopcion, int codgoAdopcion, Animal animal, Adoptante adoptante){
+    public Adopcion(LocalDate fechaAdopcion, Animal animal, Adoptante adoptante){
         this.adoptante = adoptante;
         this.animal = animal;
         this.fechaAdopcion = fechaAdopcion;
@@ -40,7 +40,7 @@ public class Adopcion {
     public String toString() {
         return  "fecha de Adopcion: " + fechaAdopcion + ", codigo del Animal: " + animal.getCodigo() + 
                 ", Nombre del animal: " + animal.getNombre() + ", Cedula del Adoptante: " + adoptante.getIdentificacion() +
-                ", Nombre del Adoptante: " + adoptante.getNombre();
+                ", Nombre del Adoptante: " + adoptante.getNombre()+ " Codigo de Adopcion: "+codigoAdopcion+" Animales adoptados: "+adoptante.getAnimalesAdoptados();
     }
     
     public String toString1() {
@@ -55,22 +55,6 @@ public class Adopcion {
     public int getCodigoAdopcion() {
         return codigoAdopcion;
     }
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 }
