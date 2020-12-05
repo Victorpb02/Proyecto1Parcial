@@ -93,9 +93,11 @@ public class Fundacion {
         animales.add(g2);
         Animal p3 = new Perro(LocalDate.now(), "s5", "asdasda", MACHO, 5, 50.2, MEDIANO);
         //p3.generarCodigo();
+        animales.add(p3);
 
         Animal g3 = new Gato(LocalDate.now(), "s6", "asdasda", MACHO, 5, 50.2);
         //g3.generarCodigo();
+        animales.add(g3);
         
         Adoptante a1 = new Adoptante("Hola", "123", "sdasa", "asdas", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("asda", "asdas", MACHO), 0);
         Adoptante a2 = new Adoptante("Hola1", "12345", "sdasa", "asdas", "", new PreferenciaAnimal("asda", "asdas", HEMBRA), 0);
@@ -170,7 +172,6 @@ public class Fundacion {
                 for(String o: observaciones){
                     a.agregarObservacion(o);
                 }
-                a.generarCodigo();
                 animales.add(a);
                 System.out.println("Perro registrado exitosamente");
                 
@@ -180,7 +181,6 @@ public class Fundacion {
                     for(String o: observaciones){
                         a.agregarObservacion(o);
                     }
-                    a.generarCodigo();
                     animales.add(a);
                     System.out.println("Gato registrado exitosamente");
                 

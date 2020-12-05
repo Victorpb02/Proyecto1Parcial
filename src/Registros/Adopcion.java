@@ -15,15 +15,17 @@ import java.time.LocalDate;
  */
 public class Adopcion {
     private LocalDate  fechaAdopcion;
-    private int codigoAdopcion;
+    private static int codigoAdopcion = 0;
+    private int entero;
     private Animal animal;
     private Adoptante adoptante;
     
     public Adopcion(LocalDate fechaAdopcion, int codgoAdopcion, Animal animal, Adoptante adoptante){
         this.adoptante = adoptante;
         this.animal = animal;
-        this.codigoAdopcion = codigoAdopcion;
         this.fechaAdopcion = fechaAdopcion;
+        codigoAdopcion++;
+        this.entero = codigoAdopcion +1;
     }
 
     public Adoptante getAdoptante() {
@@ -53,6 +55,11 @@ public class Adopcion {
 
     public int getCodigoAdopcion() {
         return codigoAdopcion;
+    }
+    
+    
+    public void generarCIncremental(){
+        
     }
     
     
