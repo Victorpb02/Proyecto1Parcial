@@ -82,27 +82,27 @@ public class Fundacion {
         empleados.add(emp2);
         //Creación de animales 
         //Perros
-        Animal p1 = new Perro(LocalDate.now(), "Perro1", "Husky", MACHO, 3, 50.2, MEDIANO);
+        Animal p1 = new Perro(LocalDate.now(), "Bobi", "Husky", MACHO, 3, 50.2, MEDIANO);
         animales.add(p1);
         ArrayList<String> sad = new ArrayList<String>();
         sad.add("Amigable");
         sad.add("Jugueton");
         p1.setObservaciones(sad);
-        Animal p2 = new Perro(LocalDate.now(), "Perra1", "Husky", HEMBRA, 2, 40.5, MEDIANO);
+        Animal p2 = new Perro(LocalDate.now(), "Lazy", "Husky", HEMBRA, 2, 40.5, MEDIANO);
         animales.add(p2);
-        Animal p3 = new Perro(LocalDate.now(), "Perro2", "Pitbull", MACHO, 5, 45.2, MEDIANO);
+        Animal p3 = new Perro(LocalDate.now(), "Zeus", "Pitbull", MACHO, 5, 45.2, MEDIANO);
         animales.add(p3);
         //Gatos
-        Animal g1 = new Gato(LocalDate.now(), "Gato1", "Siames", MACHO, 4, 5.0);
+        Animal g1 = new Gato(LocalDate.now(), "Michi", "Siames", MACHO, 4, 5.0);
         animales.add(g1);
-        Animal g2 = new Gato(LocalDate.now(), "Gato2", "Romano", MACHO, 3, 4.0);
+        Animal g2 = new Gato(LocalDate.now(), "Bola de nieve", "Romano", MACHO, 3, 4.0);
         animales.add(g2);   
-        Animal g3 = new Gato(LocalDate.now(), "Gata1", "Siames", HEMBRA, 2, 4.0);
+        Animal g3 = new Gato(LocalDate.now(), "Hera", "Siames", HEMBRA, 2, 4.0);
         animales.add(g3);
         //Creación de adoptantes
         Adoptante a1 = new Adoptante("Joel", "123", "Guayaquil", "0123456", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("Perro", "Husky", MACHO), 0);
         adoptantes.add(a1);
-        Adoptante a2 = new Adoptante("Alejandro", "12345", "Quito", "6543210", "vicpebarragan@espol.edu.ec", new PreferenciaAnimal("Gato", "Siamés", HEMBRA), 0);
+        Adoptante a2 = new Adoptante("Alejandro", "12345", "Quito", "6543210", "angdacar@espol.edu.ec", new PreferenciaAnimal("Gato", "Siames", HEMBRA), 0);
         adoptantes.add(a2);
         //Creación de adopciones
         adopciones.add(new Adopcion(LocalDate.now(), p1, a1));
@@ -279,14 +279,19 @@ public class Fundacion {
             System.out.println("A continuación ingrese las preferencias respecto a la adopción:");
             System.out.println("Ingrese el tipo de animal");
             String tipo = sc.nextLine();
+            while(!tipo.toLowerCase().equals("gato") && !tipo.toLowerCase().equals("perro")){
+                                System.out.println("El tipo de animal ingresado no está registrado en la fundacion");
+                                System.out.println("Escriba el tipo de animal");
+                                tipo=sc.nextLine();
+                            }
             System.out.println("Ingrese la raza del animal: ");
             String raza = sc.nextLine();
-            System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(Escriba 'nada' si no desea filtrar)): ");
+            System.out.println("Ingrese el SEXO del animal(Macho|Hembra|): ");
             String sexo = sc.nextLine();
             //valida la respuesta del usuario
             while (!sexo.toUpperCase().equals("MACHO") && !sexo.toUpperCase().equals("HEMBRA") && !sexo.toUpperCase().equals("nada")) {
                 System.out.println(" Sexo de animal incorrecto");
-                System.out.println("Ingrese el SEXO del animal(Macho|Hembra|(Escriba 'nada' si no desea filtrar)): ");
+                System.out.println("Ingrese el SEXO del animal(Macho|Hembra|): ");
                 sexo = sc.nextLine();
             }
             Sexo sexo1 = null;
@@ -418,11 +423,17 @@ public class Fundacion {
                 "Fecha de Ingreso", "Nombre", "Raza", "Sexo", "Peso", "Edad", "Tamanio", "Observaciones");
         
         for (Animal a : animales) {
+            if(a.getEstado().equals("No adoptado")){
             f.filtrar(sexo1, tipo1, raza.toLowerCase(), a); //se realiza el filtrado
-
         }
-        System.out.println("¿Desea realizar otra consulta?");
+        }
+        System.out.println("¿Desea realizar otra consulta?(Si-No)");
         respuesta = sc.nextLine();
+        while(!respuesta.toLowerCase().equals("si") && !respuesta.toLowerCase().equals("no")){
+                         System.out.println("Opcion invalida");
+                         System.out.println("¿Desea realizar otra consulta?(Si-No)");
+                         respuesta=sc.nextLine();
+                       }   
         }while(respuesta.toLowerCase().equals("si"));
     }
     /**
@@ -431,6 +442,7 @@ public class Fundacion {
      */
     public void consultarAdoptante() {
         String respuesta = "";
+
         do{
         for (Adoptante a : adoptantes) { //muestra los adoptantes
             System.out.println(a.toString());
@@ -438,13 +450,111 @@ public class Fundacion {
         System.out.println("Consultar por cédula");
         System.out.println("Ingrese numero de cédula: ");
         String nCedula = sc.nextLine();
+        int cont = 0;
+            while (cont != adoptantes.size()) {
+                for (Adoptante a : adoptantes) {
+                    if (!a.getIdentificacion().equals(nCedula)) { //verifica que el usuario no exista
+                        cont++;
+                    }
+                }
+                if (cont == adoptantes.size()) {
+                    
+                    System.out.println("Identificación no registrada");
+                    System.out.println("Escriba una identificación válida");
+                    nCedula = sc.nextLine();
+                    cont = 0;
+                } else { //valida que el usuario no exista
+                    System.out.println("Adoptante verificado");
+                    cont = adoptantes.size();
+                }
+            }
+        Adoptante ad=null;
         for (Adopcion p : adopciones) {
             Adoptante adop = p.getAdoptante();
             if (adop.getIdentificacion().equals(nCedula)) { //verifica que la cédula coincida
                 System.out.println(p.toString1());
+                ad=adop;
             }
-        }
+        }if(!ad.equals(null)){
+        System.out.println("¿Desea actualizar los datos de este adoptante?(Si-No): ");
+         String respuesta2=sc.nextLine();
+        do{
+            if(respuesta2.toLowerCase().equals("si")){
+                System.out.println("1. Nombre");
+                System.out.println("2. Direccion");
+                System.out.println("3. Telefono");
+                System.out.println("4. Direccion de correo");
+                System.out.println("5. Preferencias");
+                System.out.println("Seleccione que datos desea actualizar:  ");
+                int opcion = sc.nextInt();
+                sc.nextLine();
+                String resp ="";
+                    switch(opcion){
+                        case 1:
+                            System.out.println("Escriba el nuevo nombre: ");
+                            String nombre= sc.nextLine();
+                            ad.setNombre(nombre);
+                            break;
+                        case 2:
+                            System.out.println("Escriba la nueva direccion: ");
+                            String direccion = sc.nextLine();
+                            ad.setDireccion(direccion);
+                            break;
+                        case 3:
+                            System.out.println("Escriba el nuevo telefono:  ");
+                            String telefono = sc.nextLine();
+                            ad.setTelefono(telefono);
+                            break;
+                        case 4:
+                            System.out.println("Escriba la nueva direccion de correo: ");
+                            String dcorreo = sc.nextLine();
+                            ad.setDcorreo(dcorreo);
+                            break;
+                        case 5:
+                            System.out.println("Escriba las nuevas preferencias: ");
+                            System.out.println("Escriba el tipo de animal");
+                            String tipo = sc.nextLine();
+                            while(!tipo.toLowerCase().equals("gato") && !tipo.toLowerCase().equals("perro")){
+                                System.out.println("El tipo de animal ingresado no está registrado en la fundacion");
+                                System.out.println("Escriba el tipo de animal");
+                                tipo=sc.nextLine();
+                            }
+                            System.out.println("Escriba la raza del animal: ");
+                            String raza = sc.nextLine();
+                            System.out.println("Escriba el sexo del animal");
+                            String sexo = sc.nextLine();
+                            while (!sexo.toUpperCase().equals("MACHO") && !sexo.toUpperCase().equals("HEMBRA") && !sexo.toUpperCase().equals("nada")) {
+                            System.out.println(" Sexo de animal incorrecto");
+                            System.out.println("Ingrese el SEXO del animal(Macho|Hembra|): ");
+                            sexo = sc.nextLine();
+                            }
+                            Sexo sexo1 = null;
+                            if (sexo.toUpperCase().equals("MACHO") || sexo.toUpperCase().equals("HEMBRA")) {
+                                sexo1 = Sexo.valueOf(sexo.toUpperCase());
+                            }
+                            PreferenciaAnimal pa = new PreferenciaAnimal(tipo, raza, sexo1);
+                            ad.setPreferencia(pa);
+                            break;
+                    }
+                    System.out.println("¿Desea cambiar otro dato?(Si-No)");
+                     respuesta2 = sc.nextLine();
+                     while(!respuesta2.toLowerCase().equals("si") && !respuesta2.toLowerCase().equals("no")){
+                         System.out.println("Opcion invalida");
+                         System.out.println("¿Desea cambiar otro dato?(Si-No)");
+                         respuesta2=sc.nextLine();
+                       }   
+              } 
+            else{
+                respuesta2="no";
+                break;
+            }
+        }while(respuesta2.toLowerCase().equals("si")); 
+       } else{
+             System.out.println("No entra");
+             break;
+         }
         System.out.println("¿Desea consultar otro adoptante?(si/no): ");
+        respuesta=sc.nextLine();
         }while(respuesta.toLowerCase().equals("si"));
     }
     /**
@@ -492,7 +602,7 @@ public class Fundacion {
         }
         if (rm.toLowerCase().equals("consultar")) { //se muestran las veterinarias registradas
             for (Veterinaria v : veterinarias) {
-                System.out.println(v.toString());
+                System.out.println( v.toString());
             }
 
         } else if (rm.equals("registrar")) {
@@ -502,7 +612,6 @@ public class Fundacion {
             String numero = sc.nextLine();
             System.out.println("Ingrese el correo de la veterinaria: ");
             String correo = sc.nextLine();
-
             veterinarias.add(new Veterinaria(nombre, numero, correo));
         }
         System.out.println("¿Desea consultar o registrar otra veterinaria?(si/no): ");

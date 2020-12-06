@@ -73,4 +73,25 @@ public class Adoptante {
         return animalesAdoptados;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setDcorreo(String dcorreo) {
+        this.dcorreo = dcorreo;
+    }
+
+    public void setPreferencia(PreferenciaAnimal preferencia) {
+        this.preferencia = preferencia;
+    }
+
+    
 }
