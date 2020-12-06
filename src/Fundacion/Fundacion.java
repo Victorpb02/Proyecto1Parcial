@@ -58,6 +58,7 @@ public class Fundacion {
     private ArrayList<Adopcion> adopciones;
     private ArrayList<Veterinaria> veterinarias;
     private ArrayList<GastoVeterinaria> gastosVeterinarias;
+    private Filtrado f;
     private Scanner sc;
     
 
@@ -70,6 +71,7 @@ public class Fundacion {
         veterinarias = new ArrayList<Veterinaria>();
         gastosVeterinarias = new ArrayList<GastoVeterinaria>();
         animales = new ArrayList<Animal>();
+        f = new Filtrado();
         //Creación de fechas
         LocalDate date1 = LocalDate.parse("2018-10-30");
         LocalDate date2 = LocalDate.parse("2019-09-25");
@@ -414,7 +416,7 @@ public class Fundacion {
 
         System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s %-10s \n",
                 "Fecha de Ingreso", "Nombre", "Raza", "Sexo", "Peso", "Edad", "Tamanio", "Observaciones");
-        Filtrado f = new Filtrado();
+        
         for (Animal a : animales) {
             f.filtrar(sexo1, tipo1, raza.toLowerCase(), a); //se realiza el filtrado
 
